@@ -6,7 +6,7 @@ import org.newdawn.slick.Color;
 
 public class TextManager {
 	
-	public ArrayList textCall;
+	public ArrayList<TextString> textCall;
 	private TextString Paused;
 	private TextString Title;
 	private static TextString Level,Health;

@@ -1,10 +1,8 @@
 package game;
 
 import static helpers.Artist.*;
-import game.NewBoot.State;
 import helpers.Artist;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.opengl.Texture;
 
 public class ObjectManager {

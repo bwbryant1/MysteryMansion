@@ -6,10 +6,8 @@ public class CollisionGrid {
 	public static int tileSize = 16;
 
 	public static Tile[][] map;
-	private GameCharSprite character;
 
 	public CollisionGrid(int[][] newMap) {
-		this.character = character;
 		map = new Tile[COLUMN][ROW];
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
@@ -66,52 +64,8 @@ public class CollisionGrid {
 
 		return map[xPlace][yPlace];
 	}
-	public boolean findNextT() {
+	
 
-		if (getTile((int) character.getX()/16, (int) character.getY()/16+1).canCollide()) {
-			{
-				System.out.println("Top");
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	public boolean findNextB() {
-
-		if (getTile((int) character.getX()/16, (int)character.getY()/16-1).canCollide()) {
-			{
-				System.out.println("Bottom");
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	public boolean findNextL() {
-
-		if (getTile((int) character.getX()/16-1, (int) character.getY()/16).canCollide()) {
-			{
-				 System.out.println("Left"+character.getXInt2());
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	public boolean findNextR() {
-
-		if (getTile((int) character.getX()/16+1, (int) character.getY()/16).canCollide()) {
-			{
-				 System.out.println("Right");
-				return true;
-			}
-		}
-		return false;
-
-	}
+	
 
 }

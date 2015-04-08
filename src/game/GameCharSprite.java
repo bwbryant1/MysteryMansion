@@ -18,8 +18,7 @@ public class GameCharSprite {
 	private static Key_State keyState;
 	private static Key_State lastRender;
 
-	private boolean first = true, alive = true, rendered = false,
-			rendered3 = false, rendered2 = false;
+	private boolean first = true, alive = true, rendered = false;
 	private TileGrid grid;
 	private static float speed, x, y;
 	private Tile startTile;
@@ -36,44 +35,30 @@ public class GameCharSprite {
 	private static TextManager textManager;
 
 	public void setFile(String file) {
-		this.file = file;
+		GameCharSprite.file = file;
 	}
 
 	public GameCharSprite(String file, int spriteWidth, int spriteHeight,
 			Tile startTile, TileGrid grid, int width, int height, int speed,
 			int health, TextManager textManager, CollisionGrid collide) {
-		this.file = file;
+		GameCharSprite.file = file;
 		this.startTile = startTile;
 		GameCharSprite.x = startTile.getX();
 		GameCharSprite.y = startTile.getY();
 		this.width = width;
 		this.height = height;
 		this.grid = grid;
-		this.collide = collide;
+		GameCharSprite.collide = collide;
 		GameCharSprite.speed = speed;
-		this.spriteWidth = spriteWidth;
-		this.spriteHeight = spriteHeight;
-		this.currentLevel = 0;
-		this.textManager = textManager;
+		GameCharSprite.spriteWidth = spriteWidth;
+		GameCharSprite.spriteHeight = spriteHeight;
+		GameCharSprite.currentLevel = 0;
+		GameCharSprite.textManager = textManager;
 		this.health = health;
 
 	}
 
 	
-
-	private int findNext() {
-		if (collide.getTile((int) getX()/16, (int) getY()/16+1).canCollide()) {
-			
-				System.out.println("Top");
-				return 1;
-			 
-			
-			}else {
-				return 2;
-			}
-	}
-
-
 
 	public void Draw() {
 
@@ -92,7 +77,6 @@ public class GameCharSprite {
 		try {
 			sheet = new SpriteSheet(file, spriteWidth, spriteHeight);
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		ani = new Animation(GameCharSprite.sheet, (int) GameCharSprite.speed);
@@ -127,7 +111,7 @@ public class GameCharSprite {
 
 		if (collide.getTile((int) Math.floor(getX()/16), (int)Math.ceil( getY()/16-1)).canCollide()) {
 			{
-				System.out.println("Top");
+			//	System.out.println("Top");
 				return true;
 			}
 		}
@@ -139,7 +123,7 @@ public class GameCharSprite {
 
 		if (collide.getTile((int) Math.floor(getX()/16), (int)Math.floor(getY()/16+2)).canCollide()) {
 			{
-				System.out.println("Bottom");
+			//	System.out.println("Bottom");
 				return true;
 			}
 		}
@@ -151,7 +135,7 @@ public class GameCharSprite {
 
 		if (collide.getTile((int) Math.floor(getX()/16-1), (int) Math.floor(getY()/16)+1).canCollide()) {
 			{
-				 System.out.println("Left"+getXInt2());
+			//	 System.out.println("Left"+getXInt2());
 				return true;
 			}
 		}
@@ -163,7 +147,7 @@ public class GameCharSprite {
 
 		if (collide.getTile((int) Math.floor(getX()/16+1), (int) Math.floor(getY()/16)+1).canCollide()) {
 			{
-				 System.out.println("Right");
+			//	 System.out.println("Right");
 				return true;
 			}
 		}

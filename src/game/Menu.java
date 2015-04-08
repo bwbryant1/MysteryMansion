@@ -12,21 +12,13 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.openal.Audio;
-import org.newdawn.slick.openal.AudioLoader;
 import org.newdawn.slick.opengl.Texture;
 
 public class Menu  {
 
 	private Texture background;
 	private Music backgroundNoise;
-	private TileGrid grid;
-	private GameCharSprite character;
-	private ObjectManager manager;
-	private Events events;
 	private TextManager textManager;
-	private Tile console;
-	private Player player;
 	private GameObj cat1, cat2, cat3;
 	private GameObj cat4, cat6, cat7, cat8, cat9, cat10;
 	private GameObj cat5;

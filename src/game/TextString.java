@@ -2,16 +2,8 @@ package game;
 
 import java.awt.Font;
 import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import static helpers.Clock.*;
-
 import org.newdawn.slick.Color;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class TextString {
@@ -23,21 +15,21 @@ public class TextString {
 	private static Color color;
 
 	public TextString(int x, int y, String text, Color color) {
-		this.x = x;
-		this.y = y;
-		this.text = text;
-		this.color = color;
+		TextString.x = x;
+		TextString.y = y;
+		TextString.text = text;
+		TextString.color = color;
 
 	}
 
 	public TextString(int x, int y, String text, Color color, int font) {
 
-		this.x = x;
-		this.y = y;
-		this.text = text;
-		this.color = color;
-		this.awtFont = getFont(font);
-		this.font = new TrueTypeFont(awtFont, false);
+		TextString.x = x;
+		TextString.y = y;
+		TextString.text = text;
+		TextString.color = color;
+		TextString.awtFont = getFont(font);
+		TextString.font = new TrueTypeFont(awtFont, false);
 		
 	}
 

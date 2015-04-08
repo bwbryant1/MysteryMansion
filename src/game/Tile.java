@@ -26,7 +26,6 @@ public class Tile {
 		this.y = y;
 		this.height = height;
 		this.width = width;
-		this.type = type;
 		this.canCollide = canCollide;
 	}
 	

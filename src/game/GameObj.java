@@ -11,7 +11,6 @@ public class GameObj {
 
 	private Texture texture;
 	private int width, height, health;
-	private GameCharSprite character;
 
 	public GameObj(Texture texture, int width,
 			int height,  int x, int y, GameCharSprite character) {
@@ -20,7 +19,6 @@ public class GameObj {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.character = character;
 
 	}
 	public GameObj(Texture texture, int width,
@@ -30,7 +28,6 @@ public class GameObj {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.character = character;
 
 	}
 

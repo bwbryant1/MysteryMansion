@@ -13,8 +13,6 @@ public class Game {
 	private ObjectManager manager;
 	private Events events;
 	private TextManager textManager;
-	private Tile console;
-	private Player player;
 	private CollisionGrid collide;
 	private Texture overlay;
 	public static boolean notPaused = true;

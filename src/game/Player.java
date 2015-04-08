@@ -2,7 +2,6 @@ package game;
 
 import static helpers.Artist.*;
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 public class Player {
@@ -10,7 +9,6 @@ public class Player {
 	private TileGrid grid;
 	private TileType[] types;
 	private int index;
-	private boolean mousePressed = false;
 
 	public Player(TileGrid grid) {
 		this.grid = grid;
@@ -34,19 +32,7 @@ public class Player {
 
 	}
 
-	public void Update() {
-		
-		int xCoordM = Mouse.getX();
 
-		int yCoordM = Mouse.getY();
-		int xPosM = xCoordM / (TileGrid.tilesize());
-		int yPosM = HEIGHT - yCoordM - 1;
-		
-		//System.out.println(xPosM +" " + yPosM);
-
-		
-		
-	}
 
 	public void MoveIndex() {
 		index++;

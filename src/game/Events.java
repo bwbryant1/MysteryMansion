@@ -1,19 +1,6 @@
 package game;
 
-import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.glClear;
-import helpers.Artist;
-import static helpers.Artist.*;
-
-import java.awt.Font;
-
-import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.Color;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.opengl.Texture;
 
 public class Events {
 
@@ -24,8 +11,6 @@ public class Events {
 	private int levelX = 650, levelY = 50;
 	private int Entrance1 = 0, Entrance2 = 1, LivingRoom1 = 2, LivingRoom2 = 3,
 			LivingRoom3 = 4, LivingRoom4 = 5, LivingRoom5 = 6;
-	private Texture stairs;
-	private Texture stairs2;
 	private CollisionGrid collide;
 
 	// private static TextString text;
@@ -245,51 +230,5 @@ public class Events {
 		}
 
 	}
-	private boolean findNextT() {
 
-		if (collide.getTile((int) character.getX()/16, (int) character.getY()/16+1).canCollide()) {
-			{
-				System.out.println("Top");
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	private boolean findNextB() {
-
-		if (collide.getTile((int) character.getX()/16, (int)character.getY()/16-1).canCollide()) {
-			{
-				System.out.println("Bottom");
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	private boolean findNextL() {
-
-		if (collide.getTile((int) character.getX()/16-1, (int) character.getY()/16).canCollide()) {
-			{
-				 System.out.println("Left"+character.getXInt2());
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	private boolean findNextR() {
-
-		if (collide.getTile((int) character.getX()/16+1, (int) character.getY()/16).canCollide()) {
-			{
-				 System.out.println("Right");
-				return true;
-			}
-		}
-		return false;
-
-	}
 }

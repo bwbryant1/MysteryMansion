@@ -5,7 +5,7 @@ public class Collision {
 	private GameCharSprite character;
 	public Collision(CollisionGrid collide,GameCharSprite character) {
 		this.character = character;
-		this.collide = collide;
+		Collision.collide = collide;
 	}
 	boolean findNextT() {
 

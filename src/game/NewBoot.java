@@ -7,11 +7,9 @@ import helpers.Clock;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 
@@ -37,8 +35,6 @@ public class NewBoot {
 		new NewBoot();
 	}
 
-	private Tile console;
-	private boolean isStarted=false;
 	private boolean first=true;
 
 	public NewBoot() throws SlickException, LWJGLException {
