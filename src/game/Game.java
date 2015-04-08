@@ -27,7 +27,7 @@ public class Game {
 		
 		
 		
-		this.character = new GameCharSprite("res/redirect.png", 64, 64, getGrid().getTile(2, 2), getGrid(), 64, 64, 160,100,textManager, collide);
+		this.character = new GameCharSprite("res/redirect1.png", 64, 100, getGrid().getTile(2, 2), getGrid(), 32, 50, 100,100,textManager, collide);
 		
 		
 		this.manager = new ObjectManager(character);

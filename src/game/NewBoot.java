@@ -19,7 +19,7 @@ public class NewBoot {
 		INTRO, GAME, MAIN_MENU, PAUSED;
 	}
 
-	public static State state = State.GAME;
+	public static State state = State.MAIN_MENU;
 	public static TextString paused;
 
 	public static State getState() {

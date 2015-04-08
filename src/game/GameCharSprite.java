@@ -179,22 +179,22 @@ public class GameCharSprite {
 	private void direction() {
 		switch (keyState) {
 		case UP:
-			setFile("res/redirect3.png");
+			setFile("res/redirect1_4.png");
 			render();
 			lastRender = Key_State.UP;
 			break;
 		case DOWN:
-			setFile("res/redirect4.png");
+			setFile("res/redirect1_3.png");
 			render();
 			lastRender = Key_State.DOWN;
 			break;
 		case LEFT:
-			setFile("res/redirect2.png");
+			setFile("res/redirect1_2.png");
 			render();
 			lastRender = Key_State.LEFT;
 			break;
 		case RIGHT:
-			setFile("res/redirect.png");
+			setFile("res/redirect1.png");
 			render();
 			lastRender = Key_State.RIGHT;
 			break;
