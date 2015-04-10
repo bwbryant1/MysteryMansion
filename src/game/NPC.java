@@ -24,6 +24,14 @@ public class NPC {
 	private Tile startTile;
 
 	private Texture texture;
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
 	private int width, height, health;
 	private int direction = 1;
 	private static CollisionGrid collide;

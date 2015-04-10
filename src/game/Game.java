@@ -24,7 +24,7 @@ public class Game {
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
 
 		this.character = new GameCharSprite("res/redirect1.png", 64, 100,
-				getGrid().getTile(2, 2), getGrid(), 32, 50, 100, 100, textManager,
+				getGrid().getTile(5, 5), getGrid(), 32, 50, 100, 100, textManager,
 				collide);
 
 		this.manager = new ObjectManager(character);

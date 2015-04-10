@@ -3,7 +3,7 @@ package game;
 import static helpers.Artist.QuickLoad;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
-import game.NewBoot.State;
+import game.Boot.State;
 import helpers.Artist;
 
 import org.lwjgl.LWJGLException;
@@ -99,7 +99,7 @@ public class Menu  {
 			// System.out.println("yes");
 			Display.setDisplayMode(new DisplayMode(Artist.WIDTH + Artist.GUI,
 					Artist.HEIGHT));
-			NewBoot.setState(State.GAME);
+			Boot.setState(State.GAME);
 
 		}
 	}
@@ -110,7 +110,7 @@ public class Menu  {
 
 			// System.out.println("yes");
 
-			NewBoot.setState(State.MAIN_MENU);
+			Boot.setState(State.MAIN_MENU);
 			glClear(GL_COLOR_BUFFER_BIT);
 			Display.setDisplayMode(new DisplayMode(Artist.WIDTH, Artist.HEIGHT));
 			//grid.Draw();

@@ -17,13 +17,13 @@ import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 
-public class NewBoot {
+public class Boot {
 
 	public enum State {
 		INTRO, GAME, MAIN_MENU, PAUSED;
 	}
 
-	public static State state = State.GAME;
+	public static State state = State.MAIN_MENU;
 	public static TextString paused;
 
 	public static State getState() {
@@ -31,12 +31,12 @@ public class NewBoot {
 	}
 
 	public static void setState(State state) {
-		NewBoot.state = state;
+		Boot.state = state;
 	}
 
 	public static void main(String[] args) throws SlickException, LWJGLException, MalformedURLException {
 		//new GameMap().setVisible(false);
-		new NewBoot();
+		new Boot();
 		
 	}
 
@@ -44,7 +44,7 @@ public class NewBoot {
 	private boolean GameMapVisible=true;
 	private boolean first2= true;
 
-	public NewBoot() throws SlickException, LWJGLException, MalformedURLException {
+	public Boot() throws SlickException, LWJGLException, MalformedURLException {
 		GameMap map = new GameMap();
 		map.setVisible(false);
 		BeginSession();

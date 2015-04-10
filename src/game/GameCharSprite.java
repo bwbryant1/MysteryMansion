@@ -58,8 +58,6 @@ public class GameCharSprite {
 
 	}
 
-	
-
 	public void Draw() {
 
 	}
@@ -97,21 +95,15 @@ public class GameCharSprite {
 
 		ani.stop();
 		keyboard(getKey());
-		//findNextB();
-		//findNextT();
-		//findNextL();
-		//findNextR();
-		
-		
-		
-		// System.out.println(Math.floor(getX()/16)+" "+ Math.floor(getY()/16));
 
 	}
+
 	public boolean findNextT() {
 
-		if (collide.getTile((int) Math.floor(getX()/16), (int)Math.ceil( getY()/16-1)).canCollide()) {
+		if (collide.getTile((int) Math.floor(getX() / 16),
+				(int) Math.ceil(getY() / 16 - 1)).canCollide()) {
 			{
-			//	System.out.println("Top");
+				// System.out.println("Top");
 				return true;
 			}
 		}
@@ -121,9 +113,10 @@ public class GameCharSprite {
 
 	public boolean findNextB() {
 
-		if (collide.getTile((int) Math.floor(getX()/16), (int)Math.floor(getY()/16+2)).canCollide()) {
+		if (collide.getTile((int) Math.floor(getX() / 16),
+				(int) Math.floor(getY() / 16 + 2)).canCollide()) {
 			{
-			//	System.out.println("Bottom");
+				// System.out.println("Bottom");
 				return true;
 			}
 		}
@@ -133,9 +126,10 @@ public class GameCharSprite {
 
 	public boolean findNextL() {
 
-		if (collide.getTile((int) Math.floor(getX()/16-1), (int) Math.floor(getY()/16)+1).canCollide()) {
+		if (collide.getTile((int) Math.floor(getX() / 16 - 1),
+				(int) Math.floor(getY() / 16) + 1).canCollide()) {
 			{
-			//	 System.out.println("Left"+getXInt2());
+				// System.out.println("Left"+getXInt2());
 				return true;
 			}
 		}
@@ -145,16 +139,16 @@ public class GameCharSprite {
 
 	public boolean findNextR() {
 
-		if (collide.getTile((int) Math.floor(getX()/16+1), (int) Math.floor(getY()/16)+1).canCollide()) {
+		if (collide.getTile((int) Math.floor(getX() / 16 + 1),
+				(int) Math.floor(getY() / 16) + 1).canCollide()) {
 			{
-			//	 System.out.println("Right");
+				// System.out.println("Right");
 				return true;
 			}
 		}
 		return false;
 
 	}
-
 
 	private int getKey() {
 		if ((Keyboard.isKeyDown(Keyboard.KEY_W) || Keyboard
@@ -166,7 +160,7 @@ public class GameCharSprite {
 			return 4;
 		}
 		if ((Keyboard.isKeyDown(Keyboard.KEY_A) || Keyboard
-				.isKeyDown(Keyboard.KEY_LEFT)) && !findNextL() ) {
+				.isKeyDown(Keyboard.KEY_LEFT)) && !findNextL()) {
 			return 2;
 		}
 		if ((Keyboard.isKeyDown(Keyboard.KEY_D) || Keyboard
