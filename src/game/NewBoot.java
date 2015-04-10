@@ -2,8 +2,12 @@ package game;
 
 import static helpers.Artist.*;
 import static org.lwjgl.opengl.GL11.*;
+
+import java.net.MalformedURLException;
+
 import helpers.Artist;
 import helpers.Clock;
+import helpers.GameMap;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
@@ -19,7 +23,7 @@ public class NewBoot {
 		INTRO, GAME, MAIN_MENU, PAUSED;
 	}
 
-	public static State state = State.MAIN_MENU;
+	public static State state = State.GAME;
 	public static TextString paused;
 
 	public static State getState() {
@@ -30,16 +34,21 @@ public class NewBoot {
 		NewBoot.state = state;
 	}
 
-	public static void main(String[] args) throws SlickException, LWJGLException {
-		
+	public static void main(String[] args) throws SlickException, LWJGLException, MalformedURLException {
+		//new GameMap().setVisible(false);
 		new NewBoot();
+		
 	}
 
 	private boolean first=true;
+	private boolean GameMapVisible=true;
+	private boolean first2= true;
 
-	public NewBoot() throws SlickException, LWJGLException {
-
+	public NewBoot() throws SlickException, LWJGLException, MalformedURLException {
+		GameMap map = new GameMap();
+		map.setVisible(false);
 		BeginSession();
+		
 		
 		Game game = new Game(Map.Entrance1());
 		Menu menu = new Menu();
@@ -55,6 +64,19 @@ public class NewBoot {
 						state = State.GAME;
 
 				}
+				if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
+					if(GameMapVisible){
+					map.setVisible(true);
+					//GameMapVisible = false;
+
+					}
+					if(!GameMapVisible){
+						map.setVisible(false);
+						GameMapVisible = true;
+						//state = State.GAME;
+						}
+					
+				}
 			}
 
 			switch (state) {
@@ -62,12 +84,15 @@ public class NewBoot {
 				// playIntro();
 				break;
 			case MAIN_MENU:
+				
+				
 				glClear(GL_COLOR_BUFFER_BIT);
 				Clock.Update();
 				menu.Update();
 				menu.check();
 				break;
 			case GAME:
+				//map.setVisible(false);
 				menu.getBackgroundNoise().stop();
 				glClear(GL_COLOR_BUFFER_BIT);
 				if(first){
