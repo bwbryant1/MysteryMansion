@@ -27,12 +27,11 @@ public class Menu  {
 	public static long currentTime2 = System.currentTimeMillis();
 
 	public Menu() throws SlickException, LWJGLException {
-		
 		Display.setDisplayMode(new DisplayMode(Artist.WIDTH, Artist.HEIGHT));
 
 		background = QuickLoad("background");
 		setBackgroundNoise(new Music("res/Thunder.ogg"));
-		getBackgroundNoise().setVolume((float) 100.0);
+		getBackgroundNoise().setVolume((float) 1.0);
 		getBackgroundNoise().loop();
 		
 		//grid = new TileGrid(Map.createMap(20, 10));

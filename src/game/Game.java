@@ -15,74 +15,49 @@ public class Game {
 	private TextManager textManager;
 	private CollisionGrid collide;
 	private Texture overlay;
+	private NPCmanager npcMan;
 	public static boolean notPaused = true;
-	
-
-	
 
 	public Game(int[][] map) throws SlickException {
 		this.textManager = new TextManager();
 		this.setGrid(new TileGrid(map));
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
-		
-		
-		
-		this.character = new GameCharSprite("res/redirect1.png", 64, 100, getGrid().getTile(2, 2), getGrid(), 32, 50, 100,100,textManager, collide);
-		
-		
+
+		this.character = new GameCharSprite("res/redirect1.png", 64, 100,
+				getGrid().getTile(2, 2), getGrid(), 32, 50, 100, 100, textManager,
+				collide);
+
 		this.manager = new ObjectManager(character);
-		this.events = new  Events(character, getGrid(),textManager,manager, collide);
+		this.npcMan = new NPCmanager(character, getGrid(), collide, manager);
+		this.events = new Events(character, getGrid(), textManager, manager, collide);
 		overlay = Artist.QuickLoad("Overlay");
-		
-		
-				
-		
-			
-		
-		 
-		
-		//player = new Player(grid);
+
 	}
 
 	public void Update() {
-		
+
 		getGrid().Update();
 		getGrid().Draw();
 		events.Update();
-		
+
 		manager.Update();
-		
+		npcMan.Update();
+
 		character.Draw();
-		
+
 		character.Update();
-		//events.Update();
+		// events.Update();
 		if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
 			Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
 		}
-		
-		
 
-		
-		
-		//character.Update();
-		
-		//player.Update();
-
-	}
-
-	public static boolean isNotPaused() {
-		return notPaused;
-	}
-
-	public static void setPaused(boolean paused) {
-		Game.notPaused = paused;
-	}
-
-	public TileGrid getGrid() {
-		return grid;
 	}
 
 	public void setGrid(TileGrid grid) {
 		this.grid = grid;
+	}
+
+	public TileGrid getGrid() {
+		return grid;
 	}
 }

@@ -163,6 +163,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom3());
 			character.setX(550);
 			character.setLevel(LivingRoom3);
+			collide.setGrid(CollideMaps.LivingRoom3());
 
 		}
 		if (character.getYInt() == 0) {
@@ -170,6 +171,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom5());
 			character.setY(540);
 			character.setLevel(LivingRoom5);
+			collide.setGrid(CollideMaps.LivingRoom5());
 
 		}
 
@@ -182,6 +184,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom4());
 			character.setY(540);
 			character.setLevel(LivingRoom4);
+			collide.setGrid(CollideMaps.LivingRoom4());
 
 		}
 
@@ -190,6 +193,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom2());
 			character.setX(64);
 			character.setLevel(LivingRoom2);
+			collide.setGrid(CollideMaps.LivingRoom2());
 
 		}
 
@@ -201,6 +205,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom3());
 			character.setY(50);
 			character.setLevel(LivingRoom3);
+			collide.setGrid(CollideMaps.LivingRoom3());
 
 		}
 		if (character.getXInt() == 27) {
@@ -208,6 +213,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom5());
 			character.setX(50);
 			character.setLevel(LivingRoom5);
+			collide.setGrid(CollideMaps.LivingRoom5());
 
 		}
 
@@ -219,6 +225,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom2());
 			character.setY(50);
 			character.setLevel(LivingRoom2);
+			collide.setGrid(CollideMaps.LivingRoom2());
 
 		}
 		if (character.getXInt() == 0) {
@@ -226,6 +233,7 @@ public class Events {
 			grid.setGrid(Map.LivingRoom4());
 			character.setX(550);
 			character.setLevel(LivingRoom4);
+			collide.setGrid(CollideMaps.LivingRoom4());
 
 		}
 
