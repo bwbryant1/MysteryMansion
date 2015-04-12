@@ -57,7 +57,7 @@ public class NPCmanager {
 		switch (level) {
 		case 0:
 			
-			NPC robot = new NPC(file,character, 64, 64, grid.getTile((int)x, (int)y), grid, 64, 64, 30, health, collide);
+			NPC robot = new NPC(file,character,collide, 64, 64, grid.getTile((int)x, (int)y), grid, 64, 64, 30, health, collide);
 			
 			return robot;
 
