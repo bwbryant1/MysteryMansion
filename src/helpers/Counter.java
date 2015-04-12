@@ -1,98 +1,85 @@
 package helpers;
 
 public class Counter {
+	public enum countState {
+		COUNTER, RESET;
+	}
 
-	private static int countTime, timeElapsed;
+	countState counterState = countState.COUNTER;
+
+	private static int countTime, timeElapsed, resetTime;
 	private static long startTime, currentTime;
 	private static boolean wantToReset = true, isRunning;
 	private boolean isDone = false;
+	private int currentCount = 0;
 
-	/*
-	 * public static void main(String[] args) { Counter counter = new
-	 * Counter(8); isRunning = true; while (isRunning) { counter.Update(); }
-	 * 
-	 * }
-	 */
+	public static void main(String[] args) {
+		Counter counter = new Counter(2, 4);
 
-	public Counter(int countTime) {
+		isRunning = true;
+
+		while (true) {
+			counter.Update();
+		}
+
+	}
+
+	public Counter(int countTime, int ResetTime) {
+
+		if (countTime < 1) {
+			countTime = 1;
+		}
+		if (ResetTime < 1) {
+			countTime = 1;
+		}
+
 		this.countTime = countTime;
+		this.resetTime = ResetTime;
 		startTime = System.currentTimeMillis();
 		currentTime = 0;
-		
 
 	}
 
 	public void Update() {
+		currentTime = System.currentTimeMillis();
+		timeElapsed = (int) ((currentTime - startTime) / 1000);
 
-		if (isCountingDown()) {
-			currentTime = System.currentTimeMillis();
-			System.out.println((currentTime - startTime) / 1000 + " "
-					+ startTime + isCountingDown());
+		
+		//	System.out.println(timeElapsed);
 
-		}
-		if (isDone) {
-			System.out.println("Counting is Done");
-			isRunning = false;
-
-			if (isDone) {
-				// isRunning = true;
-				resetCounter();
-				isDone = false;
+		
+		switch (counterState) {
+		case COUNTER:
+			
+			
+			if (timeElapsed == countTime) {
+				counterState = counterState.RESET;
+				//System.out.println("RESET");
+				resetCountTime();
+			}else{
+				isRunning = true;
 
 			}
+			break;
+		case RESET:
+			
+			if (timeElapsed == resetTime) {
+				counterState = counterState.COUNTER;
+				//System.out.println("COUNTER");
+				resetCountTime();
+			}else{
+				isRunning = false;
+				
+			}
+			break;
 		}
 
 	}
 
-	public boolean isCountingDown() {
-		if ((currentTime - startTime) / 1000 >= countTime && !isRunning) {
-			isDone = true;
-			return true;
+	private void resetCountTime() {
+		currentCount = 0;
+		startTime = System.currentTimeMillis();
 
-		}
-
-		return false;
-	}
-
-	private void resetCounter() {
-		this.startTime = System.currentTimeMillis();
-
-	}
-
-	public static int getCountTime() {
-		return countTime;
-	}
-
-	public static void setCountTime(int countTime) {
-		Counter.countTime = countTime;
-	}
-
-	public static int getTimeElapsed() {
-		return timeElapsed;
-	}
-
-	public static void setTimeElapsed(int timeElapsed) {
-		Counter.timeElapsed = timeElapsed;
-	}
-
-	public static long getStartTime() {
-		return startTime;
-	}
-
-	public static void setStartTime(long startTime) {
-		Counter.startTime = startTime;
-	}
-
-	public static long getCurrentTime() {
-		return currentTime;
-	}
-
-	public static void setCurrentTime(long currentTime) {
-		Counter.currentTime = currentTime;
-	}
-
-	public static void setWantToReset(boolean wantToReset) {
-		Counter.wantToReset = wantToReset;
 	}
 
 	public static boolean isRunning() {
@@ -102,4 +89,15 @@ public class Counter {
 	public static void setRunning(boolean isRunning) {
 		Counter.isRunning = isRunning;
 	}
+
+	public static void setCountTime(int countTime) {
+		Counter.countTime = countTime;
+	}
+
+	public static void setResetTime(int resetTime) {
+		Counter.resetTime = resetTime;
+	}
+
+	
+
 }

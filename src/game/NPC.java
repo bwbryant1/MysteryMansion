@@ -43,6 +43,8 @@ public class NPC {
 	private static Animation ani;
 	private static SpriteSheet sheet;
 	private Counter walkCounter,resetCounter;
+	private Counter counter;
+	private boolean changedDirection = false;
 	private static int spriteWidth;
 	private static int spriteHeight;
 	private static GameCharSprite character;
@@ -63,11 +65,9 @@ public class NPC {
 		this.width = width;
 		this.height = height;
 		this.grid = grid;
-		walkCounter = new Counter(1);
-		resetCounter = new Counter(2);
-		resetCounter.setRunning(false);
-		walkCounter.setRunning(false);
-		npcState = NPC_State.DOWN;
+		counter = new Counter(2,2);
+
+
 
 	}
 
@@ -90,28 +90,34 @@ public class NPC {
 
 		// npcState = npcState.RIGHT;
 		if (rendered == false) {
+			npcState = randomDirection();
 			render();
 			rendered = true;
 		}
 		ani.draw(x, y, width, height);
 
 		ani.stop();
-		
+		counter.Update();
 
-		if(!resetCounter.isCountingDown()){
-			//walkCounter.Update();
+
+		if(!counter.isRunning()){
+			if(changedDirection ){
+				counter.setCountTime((int) (Math.random()*6+1));
+			npcState =	randomDirection();
+			changedDirection = false;
+			}
 		}
-		
 
-		if (walkCounter.isCountingDown()) {
+		if (counter.isRunning()) {
+			changedDirection = true;
 			switch (npcState) {
 			case RIGHT:
 				npcState = NPC_State.RIGHT;
 				if (lastRender != NPC_State.RIGHT) {
 					direction();
 				}
-				if (x < TileGrid.tileSize * TileGrid.COLUMN - 64) {
-					if (isTimeToMove()) {
+				if (x < TileGrid.tileSize * TileGrid.COLUMN - 64 && !findNextR()) {
+					if (true) {
 						ani.start();
 						ani.draw(x, y, width, height);
 						x += Delta() * speed;
@@ -125,8 +131,8 @@ public class NPC {
 				if (lastRender != NPC_State.LEFT) {
 					direction();
 				}
-				if (x > 16) {
-					if (isTimeToMove()) {
+				if (x > 16 && !findNextL()) {
+					if (true) {
 						ani.start();
 						ani.draw(x, y, width, height);
 						x -= Delta() * speed;
@@ -139,8 +145,8 @@ public class NPC {
 				if (lastRender != NPC_State.UP) {
 					direction();
 				}
-				if (y > TileGrid.tileSize / 4) {
-					if (isTimeToMove()) {
+				if (y > TileGrid.tileSize / 4 && !findNextT()) {
+					if (true) {
 						ani.start();
 						ani.draw(x, y, width, height);
 						y -= Delta() * speed;
@@ -153,7 +159,7 @@ public class NPC {
 				if (lastRender != NPC_State.DOWN) {
 					direction();
 				}
-				if (y < TileGrid.tileSize * TileGrid.ROW - 80) {
+				if (y < TileGrid.tileSize * TileGrid.ROW - 80 && !findNextB()) {
 					if (true) {
 						ani.start();
 						ani.draw(x, y, width, height);
@@ -167,13 +173,6 @@ public class NPC {
 		}
 	}
 
-	private boolean isTimeToMove() {
-		if (walkCounter.isCountingDown()) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 
 	private void direction() {
 		switch (npcState) {
