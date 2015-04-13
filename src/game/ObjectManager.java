@@ -12,11 +12,15 @@ public class ObjectManager {
 	private GameCharSprite character;
 	private Texture stairs;
 	private Texture stairs2;
+	private Texture fountain1;
+	private Texture fountain2;
 
 	public ObjectManager(GameCharSprite character) {
 		this.character = character;
 		stairs = Artist.QuickLoad("maps/Stairs_01");
 		stairs2 = Artist.QuickLoad("maps/Stairs_02");
+		fountain1 = Artist.QuickLoad("entrance/images/fountain_01");
+		fountain2 = Artist.QuickLoad("entrance/images/fountain_02");
 	}
 	
 	
@@ -43,10 +47,13 @@ public class ObjectManager {
 	}
 	public void Entrance1(){
 		Artist.DrawQuadTex(stairs, 0, 0, 1024, 1024);
+		Artist.DrawQuadTex(fountain1, 0, 0, 1020, 1024);
+		
 		
 	}
 	public void Entrance2(){
 		Artist.DrawQuadTex(stairs2, 0, 0, 1024, 1024);
+		Artist.DrawQuadTex(fountain2, 0, 0, 1024, 1024);
 		
 	}
 }
