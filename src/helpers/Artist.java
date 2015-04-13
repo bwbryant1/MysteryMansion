@@ -42,7 +42,7 @@ public class Artist {
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		GL11.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		GL11.glClearDepth(1);
 
 		GL11.glEnable(GL11.GL_BLEND);

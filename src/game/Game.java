@@ -6,6 +6,7 @@ import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.Texture;
 
+
 public class Game {
 
 	private TileGrid grid;
@@ -16,26 +17,29 @@ public class Game {
 	private CollisionGrid collide;
 	private Texture overlay;
 	private NPCmanager npcMan;
+	private Inventory gui;
 	public static boolean notPaused = true;
 
 	public Game(int[][] map) throws SlickException {
+		this.gui = new Inventory();
 		this.textManager = new TextManager();
 		this.setGrid(new TileGrid(map));
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
 
-		this.character = new GameCharSprite("res/redirect1.png", 64, 100,
-				getGrid().getTile(5, 5), getGrid(), 32, 50, 100, 100, textManager,
-				collide);
+		this.character = new GameCharSprite("res/images/playerD.png", 64, 100,
+				getGrid().getTile(5, 5), getGrid(), 32, 50, 100, 100,
+				textManager, collide);
 
 		this.manager = new ObjectManager(character);
 		this.npcMan = new NPCmanager(character, getGrid(), collide, manager);
-		this.events = new Events(character, getGrid(), textManager, manager, collide);
+		this.events = new Events(character, getGrid(), textManager, manager,
+				collide);
 		overlay = Artist.QuickLoad("Overlay");
 
 	}
 
 	public void Update() {
-
+		gui.Update();
 		getGrid().Update();
 		getGrid().Draw();
 		events.Update();

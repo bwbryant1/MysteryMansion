@@ -19,8 +19,8 @@ public class ObjectManager {
 		this.character = character;
 		stairs = Artist.QuickLoad("maps/Stairs_01");
 		stairs2 = Artist.QuickLoad("maps/Stairs_02");
-		fountain1 = Artist.QuickLoad("entrance/images/fountain_01");
-		fountain2 = Artist.QuickLoad("entrance/images/fountain_02");
+		fountain1 = Artist.QuickLoad("entrance/image/fountain_01");
+		fountain2 = Artist.QuickLoad("entrance/image/fountain_02");
 	}
 	
 	

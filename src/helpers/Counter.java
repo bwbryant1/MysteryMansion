@@ -45,7 +45,7 @@ public class Counter {
 		timeElapsed = (int) ((currentTime - startTime) / 1000);
 
 		
-			System.out.println(timeElapsed);
+			//System.out.println(timeElapsed);
 			if(timeElapsed > countTime + resetTime){
 				resetCountTime();
 			}
