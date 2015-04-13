@@ -202,7 +202,7 @@ public class NPC {
 	}
 
 	public NPC_State randomDirection() {
-		int caseNum = (int) (Math.random() * 4) + 1;
+		int caseNum = (int) (Math.random() * 8) + 1;
 
 		switch (caseNum) {
 		case 1:
@@ -212,6 +212,14 @@ public class NPC {
 		case 3:
 			return NPC_State.LEFT;
 		case 4:
+			return NPC_State.RIGHT;
+		case 5:
+			return NPC_State.UP;
+		case 6:
+			return NPC_State.DOWN;
+		case 7:
+			return NPC_State.LEFT;
+		case 8:
 			return NPC_State.RIGHT;
 
 		}

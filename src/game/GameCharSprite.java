@@ -256,6 +256,7 @@ public class GameCharSprite {
 				ani.draw(x, y, width, height);
 				y += Delta() * speed;
 
+
 			}
 
 			break;

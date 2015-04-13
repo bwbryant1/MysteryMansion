@@ -28,6 +28,10 @@ public class CollisionGrid {
 		map[xCoord][yCoord] = new Tile(xCoord * tileSize, yCoord * tileSize,
 				tileSize, tileSize, canCollide);
 	}
+	public void setTileCollide(int xCoord, int yCoord, boolean canCollide) {
+		map[xCoord][yCoord] = new Tile(xCoord * tileSize, yCoord * tileSize,
+				tileSize, tileSize, canCollide);
+	}
 	public void setGrid(int[][] newLevel) {
 		System.out.println("on");
 
@@ -42,6 +46,13 @@ public class CollisionGrid {
 					break;
 				
 				case 1:
+
+					setTile(i, j, true);
+					map[i][j] = new Tile(i * tileSize, j * tileSize, tileSize,
+							tileSize, true);
+					
+					break;
+				case 2:
 
 					setTile(i, j, true);
 					map[i][j] = new Tile(i * tileSize, j * tileSize, tileSize,
