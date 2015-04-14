@@ -12,17 +12,19 @@ public class Events {
 	private int Entrance1 = 0, Entrance2 = 1, LivingRoom1 = 2, LivingRoom2 = 3,
 			LivingRoom3 = 4, LivingRoom4 = 5, LivingRoom5 = 6;
 	private CollisionGrid collide;
+	private Inventory gui;
 
 	// private static TextString text;
 
 	public Events(GameCharSprite character, TileGrid grid,
-			TextManager textManager,ObjectManager manager, CollisionGrid collide) {
+			TextManager textManager,ObjectManager manager, CollisionGrid collide, Inventory gui) {
 
 		this.character = character;
 		this.grid = grid;
 		this.textManager = textManager;
 		this.manager = manager;
 		this.collide = collide;
+		this.gui = gui;
 		
 	}
 
@@ -36,6 +38,11 @@ public class Events {
 			textManager.callText(0);
 			Entrance1();
 			manager.Entrance1();
+			if(!(gui.getInventorySlot(1).getImageNum()==0)){
+				//gui.addItem(1, "empty");
+				System.out.println("ran");
+			}
+			
 			
 
 		}
@@ -46,6 +53,11 @@ public class Events {
 			textManager.callText(0);
 			Entrance2();
 			manager.Entrance2();
+			if(gui.isEmpty(1)){
+				gui.addItem(1, "sword");
+				System.out.println("ran");
+			}
+			
 
 		}
 		if (character.getLevel() == LivingRoom1) { // LivingRoom1 == 2
@@ -54,7 +66,12 @@ public class Events {
 			textManager.setText(textManager.getText(0), "LivingRoom 1", levelX,
 					levelY, Color.red);
 			textManager.callText(0);
+			if(!(gui.getInventorySlot(1).getImageNum()==2)){
+				character.setSpeed(100);
+			}
 			
+		}else{
+			character.setSpeed(200);	
 		}
 		if (character.getLevel() == LivingRoom2) {
 			// System.out.println("Level is 3");

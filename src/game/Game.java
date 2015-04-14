@@ -27,13 +27,13 @@ public class Game {
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
 
 		this.character = new GameCharSprite("res/images/playerD.png", 64, 100,
-				getGrid().getTile(5, 5), getGrid(), 32, 50, 100, 100,
+				getGrid().getTile(5, 5), getGrid(), 32, 50, 200, 100,
 				textManager, collide);
 
 		this.manager = new ObjectManager(character);
 		this.npcMan = new NPCmanager(character, getGrid(), collide, manager);
 		this.events = new Events(character, getGrid(), textManager, manager,
-				collide);
+				collide,gui);
 		overlay = Artist.QuickLoad("Overlay");
 
 	}

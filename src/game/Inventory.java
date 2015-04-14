@@ -16,7 +16,7 @@ public class Inventory {
 	private Items[] items;
 	private powerUps[] powerUps;
 	private allies[] allies;
-	private Items[] InventorySlot;
+	private static Items[] InventorySlot;
 	private int constantY = -48;
 	private static int constantX = 48;
 
@@ -82,19 +82,50 @@ public class Inventory {
 	}
 
 	public void loadItems() {
-		InventorySlot[0] = new Items("Potion", -100, 0, 1);
-		InventorySlot[1] = new Items("Potion", -100, 0, 2);
-		InventorySlot[2] = new Items("Potion", -100, 0, 2);
-		InventorySlot[3] = new Items("Potion", -100, 0, 2);
-		InventorySlot[4] = new Items("Potion", -100, 0, 2);
-		InventorySlot[5] = new Items("Potion", -100, 0, 2);
-		InventorySlot[6] = new Items("Potion", -100, 0, 2);
-		InventorySlot[7] = new Items("Potion", -100, 0, 2);
-		InventorySlot[8] = new Items("Potion", -100, 0, 2);
-		InventorySlot[9] = new Items("Potion", -100, 0, 2);
-		InventorySlot[10] = new Items("Potion", -100, 0, 2);
-		InventorySlot[11] = new Items("Potion", -100, 0, 2);
+		InventorySlot[0] = new Items("no item", 0, 0, 0);
+		InventorySlot[1] = new Items("no item", 0, 0, 0);
+		InventorySlot[2] = new Items("no item", 0, 0, 0);
+		InventorySlot[3] = new Items("no item", 0, 0, 0);
+		InventorySlot[4] = new Items("no item", 0, 0, 0);
+		InventorySlot[5] = new Items("no item", 0, 0, 0);
+		InventorySlot[6] = new Items("no item", 0, 0, 0);
+		InventorySlot[7] = new Items("no item", 0, 0, 0);
+		InventorySlot[8] = new Items("no item", 0, 0, 0);
+		InventorySlot[9] = new Items("no item", 0, 0, 0);
+		InventorySlot[10] = new Items("no item", 0, 0, 0);
+		InventorySlot[11] = new Items("no item", 0, 0, 0);
 
 	}
+
+	public void addItem(int inventorySlot, String text) {
+		switch (text) {
+		case "sword":
+			InventorySlot[inventorySlot] = Items.sword();
+			break;
+		case "empty":
+			InventorySlot[inventorySlot] = Items.empty();
+			break;
+
+		}
+
+	}
+
+	public void equip(int slot, boolean b) {
+			InventorySlot[slot].setEquipped(b);
+			
+
+	}
+
+	public static Items getInventorySlot(int slot) {
+		return InventorySlot[slot];
+	}
+	public boolean isEmpty(int slot){
+		if(InventorySlot[slot].getImageNum()==0){
+			
+			return true;
+		}
+		return false;
+	}
+	
 
 }

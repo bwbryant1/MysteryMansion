@@ -42,7 +42,7 @@ public class Artist {
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		GL11.glClearColor(0.1f, 0.1f, 0.0f, 0.0f);
 		GL11.glClearDepth(1);
 
 		GL11.glEnable(GL11.GL_BLEND);
@@ -121,11 +121,12 @@ public class Artist {
 
 	public static Texture LoadTexture(String path, String fileType) {
 		Texture tex = null;
-		InputStream in = ResourceLoader.getResourceAsStream(path);
+
 		try {
+			InputStream in = ResourceLoader.getResourceAsStream(path);
 			tex = TextureLoader.getTexture(fileType, in);
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		return tex;
