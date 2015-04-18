@@ -1,11 +1,11 @@
 package game;
 
 import helpers.Artist;
+import helpers.ConsoleParser;
 
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.Texture;
-
 
 public class Game {
 
@@ -18,24 +18,24 @@ public class Game {
 	private Texture overlay;
 	private NPCmanager npcMan;
 	private Inventory gui;
+	private ConsoleParser parser;
 	public static boolean notPaused = true;
 
-	public Game(int[][] map) throws SlickException {
+	public Game(int[][] map, ConsoleParser parser) throws SlickException {
 		this.gui = new Inventory();
 		this.textManager = new TextManager();
 		this.setGrid(new TileGrid(map));
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
-
 		this.character = new GameCharSprite("res/images/playerD.png", 64, 100,
 				getGrid().getTile(5, 5), getGrid(), 32, 50, 200, 100,
 				textManager, collide);
-
 		this.manager = new ObjectManager(character);
 		this.npcMan = new NPCmanager(character, getGrid(), collide, manager);
 		this.events = new Events(character, getGrid(), textManager, manager,
-				collide,gui);
+				collide, gui);
+		
 		overlay = Artist.QuickLoad("Overlay");
-
+		parser.setStuff(grid, events, manager, npcMan, character, textManager, gui);
 	}
 
 	public void Update() {

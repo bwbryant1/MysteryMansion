@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 
 import helpers.Artist;
 import helpers.Clock;
+import helpers.ConsoleParser;
 import helpers.GameMap;
 
 import org.lwjgl.LWJGLException;
@@ -45,12 +46,14 @@ public class Boot {
 	private boolean first2= true;
 
 	public Boot() throws SlickException, LWJGLException, MalformedURLException {
-		GameMap map = new GameMap();
+		ConsoleParser parser = new ConsoleParser();
+		GameMap map = new GameMap(parser);
+
 		map.setVisible(false);
 		BeginSession();
 		
 		
-		Game game = new Game(Map.Entrance1());
+		Game game = new Game(Map.Entrance1(),parser);
 		Menu menu = new Menu();
 		
 		//Color.white.bind();

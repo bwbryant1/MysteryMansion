@@ -38,10 +38,7 @@ public class Events {
 			textManager.callText(0);
 			Entrance1();
 			manager.Entrance1();
-			if(!(gui.getInventorySlot(1).getImageNum()==0)){
-				//gui.addItem(1, "empty");
-				System.out.println("ran");
-			}
+
 			
 			
 
@@ -53,10 +50,8 @@ public class Events {
 			textManager.callText(0);
 			Entrance2();
 			manager.Entrance2();
-			if(gui.isEmpty(1)){
-				gui.addItem(1, "sword");
-				System.out.println("ran");
-			}
+			gui.addItem(1, "sword");
+
 			
 
 		}
@@ -66,9 +61,7 @@ public class Events {
 			textManager.setText(textManager.getText(0), "LivingRoom 1", levelX,
 					levelY, Color.red);
 			textManager.callText(0);
-			if(!(gui.getInventorySlot(1).getImageNum()==2)){
-				character.setSpeed(100);
-			}
+
 			
 		}else{
 			character.setSpeed(200);	

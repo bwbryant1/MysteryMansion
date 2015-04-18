@@ -29,13 +29,17 @@ public class Inventory {
 	}
 
 	public void Update() {
-		Artist.DrawQuadTex(inventoryPic, 640 + constantX, 275 + constantY,
-				64 * 4, 256);
+		
 		Draw();
 
 	}
 
 	private void Draw() {
+		
+		//Draws the background for the GUI
+		Artist.DrawQuadTex(inventoryPic, 640 + constantX, 275 + constantY,
+				64 * 4, 256);
+		//Draws each item in the inventory. so far 12 items (0-11)
 		for (int itemNum = 0; itemNum < InventorySlot.length; itemNum++) {
 
 			switch (itemNum) {
@@ -114,6 +118,11 @@ public class Inventory {
 			InventorySlot[slot].setEquipped(b);
 			
 
+	}
+	public boolean isClicked(){
+		
+		return false;
+		
 	}
 
 	public static Items getInventorySlot(int slot) {

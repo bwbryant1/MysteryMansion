@@ -24,7 +24,8 @@ public class GameCharSprite {
 	private Tile startTile;
 
 	private Texture texture;
-	private int width, height, health;
+	private int width, height;
+	private long health;
 	private static CollisionGrid collide;
 	private static int currentLevel;
 	private static String file;
@@ -264,7 +265,7 @@ public class GameCharSprite {
 		}
 	}
 
-	public int getHealth() {
+	public long getHealth() {
 		return health;
 	}
 
