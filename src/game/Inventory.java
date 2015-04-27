@@ -18,6 +18,8 @@ public class Inventory {
 	private allies[] allies;
 	private static Items[] InventorySlot;
 	private int constantY = -48;
+	private int slot_0_X,slot_1_X,slot_2_X,slot_3_X,slot_4_X,slot_5_X,slot_6_X,slot_7_X,slot_8_X,slot_9_X,slot_10_X,slot_11_X;
+	private int slot_0_Y,slot_1_Y,slot_2_Y,slot_3_Y,slot_4_Y,slot_5_Y,slot_6_Y,slot_7_Y,slot_8_Y,slot_9_Y,slot_10_Y,slot_11_Y;
 	private static int constantX = 48;
 
 	public Inventory() {
@@ -45,40 +47,40 @@ public class Inventory {
 			switch (itemNum) {
 			case 0:
 				Artist.DrawQuadTex(InventorySlot[0].getImage(),
-						640 + constantX, 275 + constantY, 64, 64);
+						slot_0_X ,slot_0_Y , 64, 64);
 			case 1:
 				Artist.DrawQuadTex(InventorySlot[1].getImage(),
-						640 + 64 + constantX, 275 + constantY, 64, 64);
+						slot_1_X , slot_1_Y , 64, 64);
 			case 2:
 				Artist.DrawQuadTex(InventorySlot[2].getImage(),
-						640 + 128 + constantX, 275 + constantY, 64, 64);
+						slot_2_X , slot_2_Y, 64, 64);
 			case 3:
 				Artist.DrawQuadTex(InventorySlot[3].getImage(),
-						640 + constantX, 275 + 64 + constantY, 64, 64);
+						slot_3_X , slot_3_Y, 64, 64);
 			case 4:
 				Artist.DrawQuadTex(InventorySlot[4].getImage(),
-						640 + 64 + constantX, 275 + 64 + constantY, 64, 64);
+						slot_4_X , slot_4_Y, 64, 64);
 			case 5:
 				Artist.DrawQuadTex(InventorySlot[5].getImage(),
-						640 + 128 + constantX, 275 + 64 + constantY, 64, 64);
+						slot_5_X , slot_5_Y, 64, 64);
 			case 6:
 				Artist.DrawQuadTex(InventorySlot[6].getImage(),
-						640 + constantX, 275 + 128 + constantY, 64, 64);
+						slot_6_X ,slot_6_Y, 64, 64);
 			case 7:
 				Artist.DrawQuadTex(InventorySlot[7].getImage(),
-						640 + 64 + constantX, 275 + 128 + constantY, 64, 64);
+						slot_7_X , slot_7_Y, 64, 64);
 			case 8:
 				Artist.DrawQuadTex(InventorySlot[8].getImage(),
-						640 + 128 + constantX, 275 + 128 + constantY, 64, 64);
+						slot_8_X , slot_8_Y, 64, 64);
 			case 9:
 				Artist.DrawQuadTex(InventorySlot[9].getImage(),
-						640 + constantX, 275 + 192 + constantY, 64, 64);
+						slot_9_X , slot_9_Y, 64, 64);
 			case 10:
 				Artist.DrawQuadTex(InventorySlot[10].getImage(),
-						640 + 64 + constantX, 275 + 192 + constantY, 64, 64);
+						slot_10_X , slot_10_Y, 64, 64);
 			case 11:
 				Artist.DrawQuadTex(InventorySlot[11].getImage(),
-						640 + 128 + constantX, 275 + 192 + constantY, 64, 64);
+						slot_11_X , slot_11_Y, 64, 64);
 
 			}
 		}
@@ -86,6 +88,36 @@ public class Inventory {
 	}
 
 	public void loadItems() {
+		//row 1
+		slot_0_X = 640 + constantX;
+		slot_0_Y = 275 + constantY;
+		slot_1_X = 640+64 + constantX;
+		slot_1_Y = 275 + constantY;
+		slot_2_X = 640+128 + constantX;
+		slot_2_Y = 275 + constantY;
+		//row 2
+		 slot_3_X = 640 + constantX;
+		 slot_3_Y = 275+64 + constantY;
+		 slot_4_X = 640+64 + constantX;
+		 slot_4_Y = 275+64 + constantY;
+		 slot_5_X = 640+128 + constantX;
+		 slot_5_Y = 275+64 + constantY;
+		//row 3
+		 slot_6_X = 640 + constantX;
+		 slot_5_Y = 275+128 + constantY;
+		 slot_7_X = 640+64 + constantX;
+		 slot_5_Y = 275+128 + constantY;
+		 slot_8_X = 640+128 + constantX;
+		 slot_5_Y = 275+128 + constantY;
+		//row 4
+		slot_9_X = 640 + constantX;
+		slot_9_Y = 275+192 + constantY;
+		slot_10_X = 640+64 + constantX;
+		slot_10_Y = 275+192 + constantY;
+		slot_11_X = 640+128 + constantX;
+		slot_11_Y = 275+192 + constantY;
+		
+		
 		InventorySlot[0] = new Items("no item", 0, 0, 0);
 		InventorySlot[1] = new Items("no item", 0, 0, 0);
 		InventorySlot[2] = new Items("no item", 0, 0, 0);
@@ -134,6 +166,102 @@ public class Inventory {
 			return true;
 		}
 		return false;
+	}
+
+	public int getSlot_0_X() {
+		return slot_0_X;
+	}
+
+	public int getSlot_1_X() {
+		return slot_1_X;
+	}
+
+	public int getSlot_2_X() {
+		return slot_2_X;
+	}
+
+	public int getSlot_3_X() {
+		return slot_3_X;
+	}
+
+	public int getSlot_4_X() {
+		return slot_4_X;
+	}
+
+	public int getSlot_5_X() {
+		return slot_5_X;
+	}
+
+	public int getSlot_6_X() {
+		return slot_6_X;
+	}
+
+	public int getSlot_7_X() {
+		return slot_7_X;
+	}
+
+	public int getSlot_8_X() {
+		return slot_8_X;
+	}
+
+	public int getSlot_9_X() {
+		return slot_9_X;
+	}
+
+	public int getSlot_10_X() {
+		return slot_10_X;
+	}
+
+	public int getSlot_11_X() {
+		return slot_11_X;
+	}
+
+	public int getSlot_0_Y() {
+		return slot_0_Y;
+	}
+
+	public int getSlot_1_Y() {
+		return slot_1_Y;
+	}
+
+	public int getSlot_2_Y() {
+		return slot_2_Y;
+	}
+
+	public int getSlot_3_Y() {
+		return slot_3_Y;
+	}
+
+	public int getSlot_4_Y() {
+		return slot_4_Y;
+	}
+
+	public int getSlot_5_Y() {
+		return slot_5_Y;
+	}
+
+	public int getSlot_6_Y() {
+		return slot_6_Y;
+	}
+
+	public int getSlot_7_Y() {
+		return slot_7_Y;
+	}
+
+	public int getSlot_8_Y() {
+		return slot_8_Y;
+	}
+
+	public int getSlot_9_Y() {
+		return slot_9_Y;
+	}
+
+	public int getSlot_10_Y() {
+		return slot_10_Y;
+	}
+
+	public int getSlot_11_Y() {
+		return slot_11_Y;
 	}
 	
 

@@ -15,7 +15,7 @@
 	<classpathentry kind="lib" path="lib/jars/slick-util.jar"/>
 	<classpathentry kind="lib" path="lib/jars/slick.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="gitpull/lib/natives"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="MysteryMansion/lib/natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/jars/ibxm.jar"/>

@@ -14,7 +14,6 @@ public class Events {
 	private CollisionGrid collide;
 	private Inventory gui;
 
-	// private static TextString text;
 
 	public Events(GameCharSprite character, TileGrid grid,
 			TextManager textManager,ObjectManager manager, CollisionGrid collide, Inventory gui) {
@@ -29,7 +28,6 @@ public class Events {
 	}
 
 	public void Update() {
-		//System.out.println((Artist.WIDTH - character.getX()-1)/32);
 
 		if (character.getLevel() == Entrance1) { // Entrance1 == 0
 			// System.out.println("Level is 0");
@@ -63,9 +61,8 @@ public class Events {
 			textManager.callText(0);
 
 			
-		}else{
-			character.setSpeed(200);	
-		}
+		}	
+		
 		if (character.getLevel() == LivingRoom2) {
 			// System.out.println("Level is 3");
 			LivingRoom2();

@@ -342,7 +342,7 @@ public class GameCharSprite {
 	}
 
 	public void setSpeed(float speed) {
-		GameCharSprite.speed = speed;
+		this.speed = speed;
 	}
 
 	public void setStartTile(Tile startTile) {

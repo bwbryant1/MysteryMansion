@@ -15,9 +15,18 @@ public class ConsoleParser {
 	private Events events;
 	private TextManager textManager;
 	private NPCmanager npcMan;
-	private Inventory gui;
+	private Inventory inventory;
+	private GameMap map;
 
-	private String lastCommand;
+	public GameMap getMap() {
+		return map;
+	}
+
+	public void setMap(GameMap map) {
+		this.map = map;
+	}
+
+	private String lastCommand = "";
 
 	public void setStuff(TileGrid grid2, Events events2,
 			ObjectManager manager2, NPCmanager npcMan2,
@@ -27,9 +36,9 @@ public class ConsoleParser {
 		this.character = character2;
 		this.manager = manager2;
 		this.events = events2;
-		this.grid = grid2;
 		this.npcMan = npcMan2;
-		this.gui = gui2;
+		this.grid = grid2;
+		this.inventory = gui2;
 	}
 
 	public TileGrid getGrid() {
@@ -80,12 +89,12 @@ public class ConsoleParser {
 		this.npcMan = npcMan;
 	}
 
-	public Inventory getGui() {
-		return gui;
+	public Inventory getinventory() {
+		return inventory;
 	}
 
-	public void setGui(Inventory gui) {
-		this.gui = gui;
+	public void setinventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 	public String getLastCommand() {
@@ -112,9 +121,28 @@ public class ConsoleParser {
 			break;
 		case "setSpeedFast":
 			character.setSpeed(300);
+			
 			break;
 		case "setSpeedNormal":
 			character.setSpeed(100);
+			break;
+		case "setLevel1":
+			character.setLevel(1);
+			break;
+		case "setLevel2":
+			character.setLevel(2);
+			break;
+		case "setLevel3":
+			character.setLevel(3);
+			break;
+		case "setLevel4":
+			character.setLevel(4);
+			break;
+		case "setLevel5":
+			character.setLevel(5);
+			break;
+		case "setLevel6":
+			character.setLevel(6);
 			break;
 
 		}

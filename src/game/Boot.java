@@ -36,20 +36,22 @@ public class Boot {
 	}
 
 	public static void main(String[] args) throws SlickException, LWJGLException, MalformedURLException {
-		//new GameMap().setVisible(false);
-		new Boot();
+		ConsoleParser parser = new ConsoleParser();
+		new Boot(parser);
 		
 	}
 
 	private boolean first=true;
 	private boolean GameMapVisible=true;
 	private boolean first2= true;
+	private ConsoleParser parser;
 
-	public Boot() throws SlickException, LWJGLException, MalformedURLException {
-		ConsoleParser parser = new ConsoleParser();
+	public Boot(ConsoleParser parser2) throws SlickException, LWJGLException, MalformedURLException {
+		parser = parser2;
 		GameMap map = new GameMap(parser);
-
+		
 		map.setVisible(false);
+		
 		BeginSession();
 		
 		
