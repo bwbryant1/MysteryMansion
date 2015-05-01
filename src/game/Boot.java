@@ -24,7 +24,7 @@ public class Boot {
 		INTRO, GAME, MAIN_MENU, PAUSED;
 	}
 
-	public static State state = State.MAIN_MENU;
+	public static State state = State.GAME;
 	public static TextString paused;
 
 	public static State getState() {
@@ -56,7 +56,7 @@ public class Boot {
 		
 		
 		Game game = new Game(Map.Entrance1(),parser);
-		Menu menu = new Menu();
+		//Menu menu = new Menu();
 		
 		//Color.white.bind();
 		while (!Display.isCloseRequested()) {
@@ -93,12 +93,13 @@ public class Boot {
 				
 				glClear(GL_COLOR_BUFFER_BIT);
 				Clock.Update();
-				menu.Update();
-				menu.check();
+				//menu.Update();
+				//menu.check();
 				break;
 			case GAME:
 				//map.setVisible(false);
-				menu.getBackgroundNoise().stop();
+			//	menu.getBackgroundNoise().stop();
+
 				glClear(GL_COLOR_BUFFER_BIT);
 				if(first){
 					Display.setDisplayMode(new DisplayMode(Artist.WIDTH+GUI, Artist.HEIGHT));
@@ -109,12 +110,12 @@ public class Boot {
 				}
 				Clock.Update();
 				game.Update();
-				menu.check2();
+				//menu.check2();
 
 				break;
 			case PAUSED:
 				//menu.check();
-				menu.check2();
+				//menu.check2();
 				paused = new TextString(300, 300, "PAUSED", Color.yellow);
 				
 				//paused.makeString();
