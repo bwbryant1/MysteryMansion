@@ -41,13 +41,13 @@ public class Events {
 			game.setDialogue(new Dialogue(game, DialogueText.beginningScene()));
 
 		}
-		if ((Keyboard.isKeyDown(Keyboard.KEY_V))) {
+		/*if ((Keyboard.isKeyDown(Keyboard.KEY_V))) {
 			
 			game.setPaused(true);
 			game.state = game.state.DIALOGUE;
 			game.setDialogue(new Dialogue(game, DialogueText.test()));
 
-		}
+		}*/
 		
 		if (character.getXInt() == 27) {
 

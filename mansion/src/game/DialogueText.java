@@ -21,12 +21,24 @@ public class DialogueText {
 	return dialogue;
 	
 }
+	public static String[] beginningScene2(){
+		
+		String[] dialogue = new String[5];
+		dialogue[0]= "Callon: This mansion is as noble as I could ever remember.";
+		dialogue[1]= "Callon: There’s an oddness to it that I can’t lay my finger on.";
+		dialogue[2]= "Cary: That’s because the oddness that you feel in your chest is not the house.";
+		dialogue[3]= " ";
+		dialogue[4]= "";
+
+		
+
+	return dialogue;
+	
+}
 	public static String[] test(){
 		
 		String[] dialogue = new String[5];
-		dialogue[0]= "*You hear a noise*";
-		dialogue[1]= "Badguy: IMAA keel u";
-		dialogue[2]= "Test2";
+
 		dialogue[3]= " ";
 		dialogue[4]= "";
 

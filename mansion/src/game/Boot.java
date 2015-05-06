@@ -1,15 +1,14 @@
 package game;
 
-import static helpers.Artist.BeginSession;
-import static helpers.Artist.GUI;
-import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.glClear;
+import static helpers.Artist.*;
+import static org.lwjgl.opengl.GL11.*;
+
+import java.net.MalformedURLException;
+
 import helpers.Artist;
 import helpers.Clock;
 import helpers.ConsoleParser;
 import helpers.GameMap;
-
-import java.net.MalformedURLException;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
@@ -25,21 +24,21 @@ public class Boot {
 		INTRO, GAME, MAIN_MENU, PAUSED;
 	}
 
-	public static State state = State.GAME;
+	public static State state = State.MAIN_MENU;
 	public static TextString paused;
 
 	public static State getState() {
 		return state;
 	}
 
+	public static void setState(State state) {
+		Boot.state = state;
+	}
+
 	public static void main(String[] args) throws SlickException, LWJGLException, MalformedURLException {
 		ConsoleParser parser = new ConsoleParser();
 		new Boot(parser);
 		
-	}
-
-	public static void setState(State state) {
-		Boot.state = state;
 	}
 
 	private boolean first=true;
@@ -57,7 +56,7 @@ public class Boot {
 		
 		
 		Game game = new Game(Map.Entrance1(),parser);
-		//Menu menu = new Menu();
+		Menu menu = new Menu();
 		
 		//Color.white.bind();
 		while (!Display.isCloseRequested()) {
@@ -73,13 +72,13 @@ public class Boot {
 				if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
 					if(GameMapVisible){
 					map.setVisible(true);
-					
+					//GameMapVisible = false;
 
 					}
 					if(!GameMapVisible){
 						map.setVisible(false);
 						GameMapVisible = true;
-					
+						//state = State.GAME;
 						}
 					
 				}
@@ -94,10 +93,12 @@ public class Boot {
 				
 				glClear(GL_COLOR_BUFFER_BIT);
 				Clock.Update();
-
+				menu.Update();
+				menu.check();
 				break;
 			case GAME:
-
+				//map.setVisible(false);
+			//	menu.getBackgroundNoise().stop();
 
 				glClear(GL_COLOR_BUFFER_BIT);
 				if(first){
@@ -109,12 +110,15 @@ public class Boot {
 				}
 				Clock.Update();
 				game.Update();
+				//menu.check2();
 
 				break;
 			case PAUSED:
-	
+				//menu.check();
+				//menu.check2();
 				paused = new TextString(300, 300, "PAUSED", Color.yellow);
 				
+				//paused.makeString();
 				paused.Update();
 				
 				
@@ -126,9 +130,11 @@ public class Boot {
 			Display.sync(60);
 
 		}
-		
+
 		Display.destroy();
 		AL.destroy();
 		System.exit(0);
 	}
+
+
 }

@@ -94,9 +94,7 @@ public class Game {
 			Draw();
 
 			if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
-				// setPaused(true);
-				//state = State.DIALOGUE;
-				//Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
+
 
 			}
 

@@ -9,10 +9,10 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/jars/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="man/lib/natives"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="mansion/lib/natives"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/jars/slick-util.jar"/>
+	<classpathentry kind="lib" path="lib/jars/slick-util.jar" sourcepath="/home/brandon/Downloads/slick.zip"/>
 	<classpathentry kind="lib" path="lib/jars/slick.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="mansion/lib/natives"/>

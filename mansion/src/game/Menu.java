@@ -10,6 +10,7 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.Texture;
@@ -66,6 +67,7 @@ public class Menu  {
 			// System.out.println("yes");
 			Display.setDisplayMode(new DisplayMode(Artist.WIDTH + Artist.GUI,
 					Artist.HEIGHT));
+
 			Boot.setState(State.GAME);
 
 		}
@@ -129,7 +131,10 @@ public class Menu  {
 			currentTime2 = System.currentTimeMillis();
 
 		}
+		textManager.setText(textManager.getText(0), "Mystery Mansion of Forgotten Sorrows", 50,640/2, Color.red);
+		textManager.setText(textManager.getText(6), "Press Enter", 640/2-100,(640/2)+40, new Color(100, 100, 100, 255));
 		textManager.callText(0);
+		textManager.callText(6);
 		// System.out.println(((int)(System.currentTimeMillis()-currentTime)*0.001)*50);
 
 	}

@@ -11,26 +11,26 @@ public class TextString {
 
 	private static TrueTypeFont font;
 	private static Font awtFont;
-	private static int x, y;
-	private static String text;
-	private static Color color;
+	private  int x, y;
+	private String text;
+	private  Color color;
 
 	public TextString(int x, int y, String text, Color color) {
-		TextString.x = x;
-		TextString.y = y;
-		TextString.text = text;
-		TextString.color = color;
+		this.x = x;
+		this.y = y;
+		this.text = text;
+		this.color = color;
 
 	}
 
 	public TextString(int x, int y, String text, Color color, int font) {
 
-		TextString.x = x;
-		TextString.y = y;
-		TextString.text = text;
-		TextString.color = color;
-		TextString.awtFont = getFont(font);
-		TextString.font = new TrueTypeFont(awtFont, false);
+		this.x = x;
+		this.y = y;
+		this.text = text;
+		this.color = color;
+		this.awtFont = getFont(font);
+		this.font = new TrueTypeFont(awtFont, false);
 		
 	}
 
@@ -62,7 +62,7 @@ public class TextString {
 	}
 
 	public void setText(String text, int x2, int y2, Color color2) {
-		TextString.text = text;
+		this.text = text;
 		x = x2;
 		y = y2;
 		color = color2;
