@@ -22,8 +22,8 @@ public class Game {
 		return state;
 	}
 
-	public static void setState(State state) {
-		Game.state = state;
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	private Music backgroundMusic;
@@ -57,11 +57,18 @@ public class Game {
 		this.parser.setStuff(grid, events, manager, npcMan, character,
 				textManager, inventory);
 		this.fight = new FightManager(character, inventory, textManager);
-		this.dialogue = new Dialogue(character, events, manager, inventory,
-				npcMan, this);
+		this.dialogue = new Dialogue(this,DialogueText.beginningScene());
 		setBackgroundMusic(new Music("res/harmony.wav"));
-		getBackgroundMusic().loop(3, 100);
+		getBackgroundMusic().loop(1, 100);
 		overlay = Artist.QuickLoad("Overlay");
+	}
+
+	public Dialogue getDialogue() {
+		return dialogue;
+	}
+
+	public void setDialogue(Dialogue dialogue) {
+		this.dialogue = dialogue;
 	}
 
 	public Music getBackgroundMusic() {

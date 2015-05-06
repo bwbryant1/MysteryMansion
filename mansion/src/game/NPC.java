@@ -9,7 +9,7 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.opengl.Texture;
 
 public class NPC {
-	public enum NPC_State {
+	private enum NPC_State {
 		UP, DOWN, LEFT, RIGHT;
 	}
 
@@ -26,8 +26,6 @@ public class NPC {
 	private static int spriteWidth;
 
 	private static int spriteHeight;
-
-	private static GameCharSprite character;
 
 	public static Animation render() {
 		try {
@@ -52,14 +50,13 @@ public class NPC {
 	public NPC(String file, GameCharSprite character, CollisionGrid collide2,
 			int spriteWidth, int spriteHeight, Tile startTile, TileGrid grid,
 			int width, int height, int speed, int health, CollisionGrid collide) {
-		NPC.file = file;
-		NPC.spriteWidth = spriteWidth;
-		NPC.spriteHeight = spriteHeight;
-		NPC.x = startTile.getX();
-		NPC.y = startTile.getY();
-		NPC.speed = speed;
-		NPC.collide = collide;
-		NPC.character = character;
+		this.file = file;
+		this.spriteWidth = spriteWidth;
+		this.spriteHeight = spriteHeight;
+		this.x = startTile.getX();
+		this.y = startTile.getY();
+		this.speed = speed;
+		this.collide = collide;
 		this.startTile = startTile;
 		this.health = health;
 		this.width = width;
@@ -203,7 +200,7 @@ public class NPC {
 	}
 
 	public void setFile(String file) {
-		NPC.file = file;
+		this.file = file;
 	}
 
 	public void setHealth(int health) {

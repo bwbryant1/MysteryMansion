@@ -38,10 +38,16 @@ public class Events {
 			
 			game.setPaused(true);
 			game.state = game.state.DIALOGUE;
-			//Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
+			game.setDialogue(new Dialogue(game, DialogueText.beginningScene()));
 
 		}
+		if ((Keyboard.isKeyDown(Keyboard.KEY_V))) {
 			
+			game.setPaused(true);
+			game.state = game.state.DIALOGUE;
+			game.setDialogue(new Dialogue(game, DialogueText.test()));
+
+		}
 		
 		if (character.getXInt() == 27) {
 

@@ -34,13 +34,16 @@ public class NPCmanager {
 		case 0:
 			
 			NPC robot = new NPC(file,character,collide, 64, 64, grid.getTile((int)x, (int)y), grid, 64, 64, 30, health, collide);
+			//NPC robot2 = new NPC(file,character,collide, 64, 64, grid.getTile((int)x+1, (int)y+1), grid, 64, 64, 30, health, collide);
 			
 			return robot;
 
 			
 		case 1:
 
-			break;
+			NPC robot1 = new NPC(file,character,collide, 64, 64, grid.getTile((int)x, (int)y), grid, 64, 64, 30, health, collide);
+			
+			return robot1;
 		case 2:
 
 			break;
@@ -66,14 +69,17 @@ public class NPCmanager {
 		
 		if (character.getLevel() == Entrance1) { // Entrance1 == 0
 			if(first ){
-				npc1 = createNPC(0, character, "res/redirect.png", 2, 2, 100);
-				
+				//npc1 =  new NPC("res/redirect.png",character,collide, 64, 64, grid.getTile(6,6), grid, 64, 64, 30, 100, collide);
+				npc2 = createNPC(1, character, "res/redirect.png", 6, 6, 100);
+				//npc2 = new NPC("res/redirect.png",character,collide, 64, 64, grid.getTile(0,0), grid, 64, 64, 30, 100, collide);
 				first = false;
 			}
-			npc1.Update(paused );
+			//npc1.Update(paused );
+			npc2.Update(paused );
 		}
 		if (character.getLevel() == Entrance2) { // Entrance2 == 1
-
+			//npc2.Update(paused );
+			
 		}
 		if (character.getLevel() == LivingRoom1) { // LivingRoom1 == 2
 
