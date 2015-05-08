@@ -21,10 +21,12 @@ public class Events {
 	private Inventory gui;
 	private Game game;
 	private Texture MansionBackground;
-
+	private boolean CaryScene = true;
+	private NPCmanager npcMan;
 
 	public Events(GameCharSprite character, TileGrid grid,
-			TextManager textManager,ObjectManager manager, CollisionGrid collide, Inventory gui, Game game) {
+			TextManager textManager, ObjectManager manager,
+			CollisionGrid collide, Inventory gui, Game game, NPCmanager npcMan) {
 
 		this.character = character;
 		this.grid = grid;
@@ -33,36 +35,48 @@ public class Events {
 		this.collide = collide;
 		this.gui = gui;
 		this.game = game;
+		this.npcMan = npcMan;
 		MansionBackground = QuickLoad("ManBackground");
-		
-	}
-	private void Outside_Mansion(){
-		Artist.DrawQuadTex(MansionBackground,0,0,1024,1024);
-		if (character.getYInt() == 13) {
 
-			character.setPaused(true);
-			
-			
-		}
-		
 	}
+
+	private void Outside_Mansion() {
+		Artist.DrawQuadTex(MansionBackground, 0, 0, 1024, 1024);
+		if (character.getYInt() == 13) {
+			if (CaryScene) {
+				character.setPaused(true);
+				npcMan.setSceneStarted(true);
+				CaryScene = false;
+			}
+
+		}
+		if (character.getYInt() == 8) {
+			grid.setGrid(Map.Entrance1());
+			collide.setGrid(CollideMaps.Entrance1());
+			character.setLevel(Entrance1);
+			character.setY(520);
+		}
+
+	}
+
 	private void Entrance1() {
-		//collide.setGrid(CollideMaps.Entrance1());
+		// collide.setGrid(CollideMaps.Entrance1());
 		if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
-			
+
 			game.setPaused(true);
 			game.state = game.state.DIALOGUE;
 			game.setDialogue(new Dialogue(game, DialogueText.beginningScene()));
 
 		}
-		/*if ((Keyboard.isKeyDown(Keyboard.KEY_V))) {
-			
-			game.setPaused(true);
-			game.state = game.state.DIALOGUE;
-			game.setDialogue(new Dialogue(game, DialogueText.test()));
+		/*
+		 * if ((Keyboard.isKeyDown(Keyboard.KEY_V))) {
+		 * 
+		 * game.setPaused(true); game.state = game.state.DIALOGUE;
+		 * game.setDialogue(new Dialogue(game, DialogueText.test()));
+		 * 
+		 * }
+		 */
 
-		}*/
-		
 		if (character.getXInt() == 27) {
 
 			grid.setGrid(Map.Entrance2());
@@ -70,9 +84,10 @@ public class Events {
 			character.setLevel(Entrance2);
 			collide.setGrid(CollideMaps.Entrance2());
 		}
-		
+
 		if (character.getXInt() == 0
-				&& (character.getYInt() == 13 ||character.getYInt() == 12 || character.getYInt() == 11  )) {
+				&& (character.getYInt() == 13 || character.getYInt() == 12 || character
+						.getYInt() == 11)) {
 
 			grid.setGrid(Map.LivingRoom1());
 			character.setX(550);
@@ -83,20 +98,20 @@ public class Events {
 	}
 
 	private void Entrance2() {
-		
+
 		if (character.getXInt() == 0) {
 			// System.out.println("events");
 			grid.setGrid(Map.Entrance1());
 			character.setX(500);
 			character.setLevel(Entrance1);
 			collide.setGrid(CollideMaps.Entrance1());
-	
+
 		}
-	
+
 	}
 
 	private void LivingRoom1() {
-		
+
 		if (character.getXInt() == 27
 				&& (character.getYInt() == 12 || character.getYInt() == 11 || character
 						.getYInt() == 13)) {
@@ -209,10 +224,10 @@ public class Events {
 	}
 
 	public void Update() {
-		
-		if(character.getLevel() == 100){
-			textManager.setText(textManager.getText(0), "outside the mansion", levelX,
-					levelY, Color.red);
+
+		if (character.getLevel() == 100) {
+			textManager.setText(textManager.getText(0), "outside the mansion",
+					levelX, levelY, Color.red);
 			textManager.callText(0);
 			Outside_Mansion();
 			manager.Outside_Mansion();
@@ -224,11 +239,9 @@ public class Events {
 			textManager.setText(textManager.getText(0), "Entrance 1", levelX,
 					levelY, Color.red);
 			textManager.callText(0);
+			collide.setGrid(CollideMaps.Entrance1());
 			Entrance1();
 			manager.Entrance1();
-
-			
-			
 
 		}
 		if (character.getLevel() == Entrance2) { // Entrance2 == 1
@@ -240,8 +253,6 @@ public class Events {
 			manager.Entrance2();
 			gui.addItem(1, "sword");
 
-			
-
 		}
 		if (character.getLevel() == LivingRoom1) { // LivingRoom1 == 2
 			// text();System.out.println("Level is 2");
@@ -250,9 +261,8 @@ public class Events {
 					levelY, Color.red);
 			textManager.callText(0);
 
-			
-		}	
-		
+		}
+
 		if (character.getLevel() == LivingRoom2) {
 			// System.out.println("Level is 3");
 			LivingRoom2();

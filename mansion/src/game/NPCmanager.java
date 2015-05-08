@@ -19,6 +19,16 @@ public class NPCmanager {
 	private NPC cary;
 	private boolean caryBool = true;
 	private boolean CaryTalkScene = true;
+	private boolean RenderCary = true;
+	private static boolean sceneStarted = false;
+
+	public static boolean isSceneStarted() {
+		return sceneStarted;
+	}
+
+	public static void setSceneStarted(boolean sceneStarted) {
+		NPCmanager.sceneStarted = sceneStarted;
+	}
 
 	public boolean isPaused() {
 		return paused;
@@ -80,44 +90,55 @@ public class NPCmanager {
 
 	public void Update() {
 		if (character.getLevel() == 100) { // Entrance2 == 1
-			if (character.isPaused() == true) {
+			if (sceneStarted) {
 				if (first2) {
 
-					cary = createNPC(1, character, "res/redirect.png", 5, 4,
+					cary = createNPC(1, character, "res/redirect.png", 4, 4,
 							100);
+					cary.setDirection(2);
 					first2 = false;
 				}
-				cary.setDirection(2);
-				cary.Update2(caryBool);
+				if (RenderCary == true) {
+					cary.Update2(caryBool);
+					if (cary.getYInt() < 8) {
+						caryBool = false;
+						RenderCary = false;
+						character.setPaused(false);
+
+					}
+					System.out.println(game.getState() + "" + cary.getYInt());
+	
+				}
 				if (cary.getYInt() == 12) {
 					caryBool = false;
 					if (CaryTalkScene) {
 						game.setState(State.DIALOGUE);
 						CaryTalkScene = false;
 					}
-					System.out.println(game.getState());
-					if(!CaryTalkScene){
-						
+					// System.out.println(game.getState());
+					if (CaryTalkScene == false
+							&& game.getState() == game.state.GAME) {
+
+						if (cary.getYInt() > 9) {
+							caryBool = true;
+							if (RenderCary == true) {
+								// cary.Update2(caryBool);
+							}
+							cary.setDirection(1);
+						}
+
+
 					}
 				}
 			}
-
+			
 		}
 
 		if (character.getLevel() == Entrance1) { // Entrance1 == 0
-			if (first) {
-				// npc1 = new NPC("res/redirect.png",character,collide, 64, 64,
-				// grid.getTile(6,6), grid, 64, 64, 30, 100, collide);
-				npc2 = createNPC(1, character, "res/redirect.png", 6, 6, 100);
-				// npc2 = new NPC("res/redirect.png",character,collide, 64, 64,
-				// grid.getTile(0,0), grid, 64, 64, 30, 100, collide);
-				first = false;
-			}
-			// npc1.Update(paused );
-			npc2.Update(paused);
+			
 		}
 		if (character.getLevel() == Entrance2) { // Entrance2 == 1
-			// npc2.Update(paused );
+			
 
 		}
 		if (character.getLevel() == LivingRoom1) { // LivingRoom1 == 2

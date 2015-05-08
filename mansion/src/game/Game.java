@@ -52,7 +52,7 @@ public class Game {
 		this.manager = new ObjectManager(character);
 		this.npcMan = new NPCmanager(character, getGrid(), collide, manager, this);
 		this.events = new Events(character, getGrid(), textManager, manager,
-				collide, inventory,this);
+				collide, inventory,this,npcMan);
 		this.parser = parser2;
 		this.parser.setStuff(grid, events, manager, npcMan, character,
 				textManager, inventory);
