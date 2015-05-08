@@ -99,13 +99,14 @@ public class Boot {
 			case GAME:
 				//map.setVisible(false);
 			//	menu.getBackgroundNoise().stop();
-
+				menu.getBackgroundNoise().stop();
+				
 				glClear(GL_COLOR_BUFFER_BIT);
 				if(first){
 					Display.setDisplayMode(new DisplayMode(Artist.WIDTH+GUI, Artist.HEIGHT));
 					game.getGrid().setGrid(Map.Entrance1());
 					
-					
+					game.getBackgroundMusic().loop();
 					first = false;
 				}
 				Clock.Update();

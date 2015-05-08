@@ -82,7 +82,7 @@ public class GameCharSprite {
 		GameCharSprite.speed = speed;
 		GameCharSprite.spriteWidth = spriteWidth;
 		GameCharSprite.spriteHeight = spriteHeight;
-		GameCharSprite.currentLevel = 0;
+		GameCharSprite.currentLevel = 100;
 		GameCharSprite.exp = 1000;
 		GameCharSprite.textManager = textManager;
 		this.health = health;
@@ -94,7 +94,7 @@ public class GameCharSprite {
 	}
 
 	public void Update() {
-	
+		System.out.println(this.getXInt()+" "+this.getYInt());
 		textManager.setText(textManager.getText(1), "Health: " + health, 650,
 				100, Color.red);
 		textManager.callText(1);

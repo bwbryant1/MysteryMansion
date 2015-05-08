@@ -37,9 +37,9 @@ public class TextString {
 	private Font getFont(int font) {
 		switch(font){
 		case 1:
-			return awtFont = new Font("Times New Roman", Font.BOLD, 24);
+			return awtFont = new Font("Times New Roman", Font.BOLD, 20);
 		case 2:
-			return awtFont = new Font("Arial", Font.BOLD, 24);
+			return awtFont = new Font("Arial", Font.BOLD, 20);
 		case 3:
 		{
 			try {
@@ -48,7 +48,7 @@ public class TextString {
 						.getResourceAsStream("res/fonts/myfont.ttf");
 
 				awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
-				awtFont = awtFont.deriveFont(36f); // set font size
+				awtFont = awtFont.deriveFont(20f); // set font size
 				return awtFont;
 			
 

@@ -1,9 +1,12 @@
 package game;
 
+import static helpers.Artist.QuickLoad;
 import game.Game.State;
+import helpers.Artist;
 
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.opengl.Texture;
 
 public class Events {
 
@@ -17,6 +20,7 @@ public class Events {
 	private CollisionGrid collide;
 	private Inventory gui;
 	private Game game;
+	private Texture MansionBackground;
 
 
 	public Events(GameCharSprite character, TileGrid grid,
@@ -29,9 +33,19 @@ public class Events {
 		this.collide = collide;
 		this.gui = gui;
 		this.game = game;
+		MansionBackground = QuickLoad("ManBackground");
 		
 	}
+	private void Outside_Mansion(){
+		Artist.DrawQuadTex(MansionBackground,0,0,1024,1024);
+		if (character.getYInt() == 13) {
 
+			character.setPaused(true);
+			
+			
+		}
+		
+	}
 	private void Entrance1() {
 		//collide.setGrid(CollideMaps.Entrance1());
 		if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
@@ -195,6 +209,15 @@ public class Events {
 	}
 
 	public void Update() {
+		
+		if(character.getLevel() == 100){
+			textManager.setText(textManager.getText(0), "outside the mansion", levelX,
+					levelY, Color.red);
+			textManager.callText(0);
+			Outside_Mansion();
+			manager.Outside_Mansion();
+			collide.setGrid(CollideMaps.Outside_Mansion());
+		}
 
 		if (character.getLevel() == Entrance1) { // Entrance1 == 0
 			// System.out.println("Level is 0");

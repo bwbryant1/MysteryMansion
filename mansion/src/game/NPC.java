@@ -199,6 +199,40 @@ public class NPC {
 
 	}
 
+	public void setDirection(int caseNum) {
+		
+
+		switch (caseNum) {
+		case 1:
+			npcState = NPC_State.UP;
+			break;
+		case 2:
+			npcState = NPC_State.DOWN;
+			break;
+		case 3:
+			npcState = NPC_State.LEFT;
+			break;
+		case 4:
+			npcState = NPC_State.RIGHT;
+			break;
+		case 5:
+			npcState = NPC_State.UP;
+			break;
+		case 6:
+			npcState = NPC_State.DOWN;
+			break;
+		case 7:
+			npcState = NPC_State.LEFT;
+			break;
+		case 8:
+			npcState = NPC_State.RIGHT;
+			break;
+
+		}
+		
+
+	}
+
 	public void setFile(String file) {
 		this.file = file;
 	}
@@ -297,4 +331,85 @@ public class NPC {
 			}
 		}
 	}
-}
+
+	public void Update2(boolean b) {
+		if (rendered == false) {
+			
+			render();
+			rendered = true;
+		}
+		ani.draw(x, y, width, height);
+
+		ani.stop();
+
+
+			if (b) {
+				changedDirection = true;
+				switch (npcState) {
+				case RIGHT:
+					npcState = NPC_State.RIGHT;
+					if (lastRender != NPC_State.RIGHT) {
+						direction();
+					}
+					if (x < TileGrid.tileSize * TileGrid.COLUMN - 64
+							&& !findNextR()) {
+						if (true) {
+							ani.start();
+							ani.draw(x, y, width, height);
+							x += Delta() * speed;
+						}
+
+					}
+
+					break;
+				case LEFT:
+					npcState = NPC_State.LEFT;
+					if (lastRender != NPC_State.LEFT) {
+						direction();
+					}
+					if (x > 16 && !findNextL()) {
+						if (true) {
+							ani.start();
+							ani.draw(x, y, width, height);
+							x -= Delta() * speed;
+						}
+
+					}
+					break;
+				case UP:
+					npcState = NPC_State.UP;
+					if (lastRender != NPC_State.UP) {
+						direction();
+					}
+					if (y > TileGrid.tileSize / 4 && !findNextT()) {
+						if (true) {
+							ani.start();
+							ani.draw(x, y, width, height);
+							y -= Delta() * speed;
+						}
+
+					}
+					break;
+				case DOWN:
+					npcState = NPC_State.DOWN;
+					if (lastRender != NPC_State.DOWN) {
+						direction();
+					}
+					if (y < TileGrid.tileSize * TileGrid.ROW - 80
+							&& !findNextB()) {
+						if (true) {
+							ani.start();
+							ani.draw(x, y, width, height);
+							y += Delta() * speed;
+						}
+
+					}
+					break;
+
+				}
+			}
+		}
+	}
+		
+	
+

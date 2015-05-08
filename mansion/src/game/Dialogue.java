@@ -71,9 +71,9 @@ public class Dialogue {
 	}
 	private static void Draw(){
 		Artist.DrawQuadTex(dialogueBox , 0, TileGrid.COLUMN * TileGrid.tileSize
-				- 128, 448 * 2 + 128, 128);
-		text.setText(text.getText(4), dialogueTextString, 50, TileGrid.COLUMN
-				* TileGrid.tileSize - 100, Color.black);
+				- 128, 448 * 2 + 180, 128);
+		text.setText(text.getText(4), dialogueTextString, 10, TileGrid.COLUMN
+				* TileGrid.tileSize - 80, Color.black);
 		text.callText(4);
 		
 	}

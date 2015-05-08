@@ -47,10 +47,10 @@ public class Game {
 		this.setGrid(new TileGrid(map));
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
 		this.character = new GameCharSprite("res/images/playerD.png", 64, 100,
-				getGrid().getTile(5, 5), getGrid(), 32, 50, 100, 100,
+				getGrid().getTile(5, 9), getGrid(), 32, 50, 100, 100,
 				textManager, collide);
 		this.manager = new ObjectManager(character);
-		this.npcMan = new NPCmanager(character, getGrid(), collide, manager);
+		this.npcMan = new NPCmanager(character, getGrid(), collide, manager, this);
 		this.events = new Events(character, getGrid(), textManager, manager,
 				collide, inventory,this);
 		this.parser = parser2;
@@ -94,8 +94,8 @@ public class Game {
 			Draw();
 
 			if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
-
-
+				Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
+				
 			}
 
 			break;

@@ -56,4 +56,10 @@ public class ObjectManager {
 		
 			
 	}
+
+
+	public void Outside_Mansion() {
+		// TODO Auto-generated method stub
+		
+	}
 }
