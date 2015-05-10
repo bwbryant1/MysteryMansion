@@ -95,6 +95,7 @@ public class Game {
 
 			if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
 				Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
+				character.setLevel(0);
 				
 			}
 

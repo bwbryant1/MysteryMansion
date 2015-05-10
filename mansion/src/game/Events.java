@@ -23,6 +23,8 @@ public class Events {
 	private Texture MansionBackground;
 	private boolean CaryScene = true;
 	private NPCmanager npcMan;
+	private boolean CaryScene2 = true;
+	private boolean beginningScene2 = true;
 
 	public Events(GameCharSprite character, TileGrid grid,
 			TextManager textManager, ObjectManager manager,
@@ -45,8 +47,9 @@ public class Events {
 		if (character.getYInt() == 13) {
 			if (CaryScene) {
 				character.setPaused(true);
-				npcMan.setSceneStarted(true);
+				npcMan.setSceneStarted(true,0);
 				CaryScene = false;
+				game.setDialogue(new Dialogue(game, DialogueText.beginningScene()));
 			}
 
 		}
@@ -60,22 +63,18 @@ public class Events {
 	}
 
 	private void Entrance1() {
-		// collide.setGrid(CollideMaps.Entrance1());
-		if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
-
-			game.setPaused(true);
-			game.state = game.state.DIALOGUE;
-			game.setDialogue(new Dialogue(game, DialogueText.beginningScene()));
-
+		if(CaryScene2){
+			character.setPaused(true);
+			npcMan.setSceneStarted(true, 1);
+			game.setDialogue(new Dialogue(game, DialogueText.beginningScene2()));
+			CaryScene2 = false;
+			character.setY(440);
+			game.setState(State.DIALOGUE);
+			
 		}
-		/*
-		 * if ((Keyboard.isKeyDown(Keyboard.KEY_V))) {
-		 * 
-		 * game.setPaused(true); game.state = game.state.DIALOGUE;
-		 * game.setDialogue(new Dialogue(game, DialogueText.test()));
-		 * 
-		 * }
-		 */
+		if(!CaryScene2 && game.state == State.GAME){
+			character.setLevel(101);
+		}
 
 		if (character.getXInt() == 27) {
 
@@ -95,6 +94,34 @@ public class Events {
 			collide.setGrid(CollideMaps.LivingRoom1());
 		}
 
+	}
+
+	private void Entrance1Copy() {
+
+		if(CaryScene2 == false && game.state == State.GAME && beginningScene2  == true){
+			game.setDialogue(new Dialogue(game, DialogueText.beginningScene3()));
+			game.setState(State.DIALOGUE);
+			beginningScene2 = false;
+		}
+	
+		if (character.getXInt() == 27) {
+	
+			grid.setGrid(Map.Entrance2());
+			character.setX(50);
+			character.setLevel(Entrance2);
+			collide.setGrid(CollideMaps.Entrance2());
+		}
+	
+		if (character.getXInt() == 0
+				&& (character.getYInt() == 13 || character.getYInt() == 12 || character
+						.getYInt() == 11)) {
+	
+			grid.setGrid(Map.LivingRoom1());
+			character.setX(550);
+			character.setLevel(LivingRoom1);
+			collide.setGrid(CollideMaps.LivingRoom1());
+		}
+	
 	}
 
 	private void Entrance2() {
@@ -226,13 +253,14 @@ public class Events {
 	public void Update() {
 
 		if (character.getLevel() == 100) {
-			textManager.setText(textManager.getText(0), "outside the mansion",
+			textManager.setText(textManager.getText(0), "Outside the mansion",
 					levelX, levelY, Color.red);
 			textManager.callText(0);
 			Outside_Mansion();
 			manager.Outside_Mansion();
 			collide.setGrid(CollideMaps.Outside_Mansion());
 		}
+		
 
 		if (character.getLevel() == Entrance1) { // Entrance1 == 0
 			// System.out.println("Level is 0");
@@ -241,6 +269,15 @@ public class Events {
 			textManager.callText(0);
 			collide.setGrid(CollideMaps.Entrance1());
 			Entrance1();
+			manager.Entrance1();
+
+		}
+		if (character.getLevel() == 101) { 
+			textManager.setText(textManager.getText(0), "Entrance 1", levelX,
+					levelY, Color.red);
+			textManager.callText(0);
+			collide.setGrid(CollideMaps.Entrance1());
+			Entrance1Copy();
 			manager.Entrance1();
 
 		}

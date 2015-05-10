@@ -15,19 +15,35 @@ public class NPCmanager {
 	private NPC npc3;
 	private boolean paused = false;
 	private Game game;
-	private boolean first2 = true;
+	private boolean first2 = true,first3 = true;;
 	private NPC cary;
 	private boolean caryBool = true;
 	private boolean CaryTalkScene = true;
 	private boolean RenderCary = true;
 	private static boolean sceneStarted = false;
+	private static boolean beginningScene2 = false;
 
-	public static boolean isSceneStarted() {
-		return sceneStarted;
+	public static boolean isSceneStarted(int scene) {
+		switch (scene){
+		case 0:
+			return sceneStarted;
+			
+		case 1: 
+			return beginningScene2;
+			
+		
+		}
+		return false;
 	}
 
-	public static void setSceneStarted(boolean sceneStarted) {
+	public static void setSceneStarted(boolean sceneStarted, int scene) {
+		switch(scene){
+		case 0:
 		NPCmanager.sceneStarted = sceneStarted;
+		break;
+		case 1:
+		NPCmanager.beginningScene2 = sceneStarted;	
+		}
 	}
 
 	public boolean isPaused() {
@@ -106,7 +122,7 @@ public class NPCmanager {
 						character.setPaused(false);
 
 					}
-					System.out.println(game.getState() + "" + cary.getYInt());
+					//System.out.println(game.getState() + "" + cary.getYInt());
 	
 				}
 				if (cary.getYInt() == 12) {
@@ -135,7 +151,14 @@ public class NPCmanager {
 		}
 
 		if (character.getLevel() == Entrance1) { // Entrance1 == 0
-			
+			cary.setX(300);
+			cary.setY(400);
+			if(first3){
+			cary.setDirection(2);
+			cary.Update2(true);
+			first3 = false;
+			}
+			cary.Update2(false);
 		}
 		if (character.getLevel() == Entrance2) { // Entrance2 == 1
 			

@@ -37,7 +37,7 @@ public class CollisionGrid {
 		return map[xPlace][yPlace];
 	}
 	public void setGrid(int[][] newLevel) {
-		System.out.println("on");
+		
 
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {

@@ -94,7 +94,7 @@ public class GameCharSprite {
 	}
 
 	public void Update() {
-		System.out.println(this.getXInt()+" "+this.getYInt());
+		//System.out.println(this.getXInt()+" "+this.getYInt());
 		textManager.setText(textManager.getText(1), "Health: " + health, 650,
 				100, Color.red);
 		textManager.callText(1);

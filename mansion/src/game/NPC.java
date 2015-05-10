@@ -409,6 +409,14 @@ public class NPC {
 				}
 			}
 		}
+
+	public static void setX(float x) {
+		NPC.x = x;
+	}
+
+	public static void setY(float y) {
+		NPC.y = y;
+	}
 	}
 		
 	
