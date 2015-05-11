@@ -23,13 +23,14 @@ public class DialogueText {
 
 	public static String[] beginningScene2() {
 
-		String[] dialogue = new String[6];
+		String[] dialogue = new String[7];
 		dialogue[0] = "Callon: This mansion is as noble as I could ever remember.";
 		dialogue[1] = "Callon: There’s an oddness to it that I can’t lay my finger on.";
 		dialogue[2] = "Cary: That’s because the oddness that you feel in your chest is not the house.";
 		dialogue[3] = "Cary: It is your downfall!!";
-		dialogue[4] = " ";
-		dialogue[5] = "";
+		dialogue[4] = "<Cary disappears>"; 
+		dialogue[5] = " ";
+		dialogue[6] = "";
 
 		return dialogue;
 
@@ -37,16 +38,18 @@ public class DialogueText {
 	public static String[] beginningScene3() {
 
 	
-		String[] dialogue = new String[9];
+		String[] dialogue = new String[10];
 		dialogue[0] = "Callon: What is the meaning of this mentor!!1? ";
-		dialogue[1] = "Cary: My meaning is my own boy!";
-		dialogue[2] = "Now, only allow me to make your body my own and this would go a bully of an amount smoother.";
+		dialogue[1] = "Cary: My meaning is my own, boy!";
+		dialogue[2] = "Now, allow me to take your body as my own and this will go a lot smoother.";
 		dialogue[3] = "Callon: You make no sense!";
-		dialogue[4] = "I know not what you plan to perpetrate with my body <Draws sword> But you will end now!";
-		dialogue[5] = "Cary: You always made things difficult.";
-		dialogue[6] = "I am not sure what is happening, but I want out. Let me see if  can get out of here.";
-		dialogue[7] = " ";
-		dialogue[8] = "";
+		dialogue[4] = "I know not what you plan to perpetrate with my body, But you will end now!";
+		dialogue[5] = "Cary: Tsk.. Tsk.. You've always made things difficult.";
+		dialogue[6] = "Callon: I am not sure what is happening here, but I want out.";
+		dialogue[7] = "Let me see if  can get out of here.";
+		
+		dialogue[8] = " ";
+		dialogue[9] = "";
 		
 		return dialogue;
 	}

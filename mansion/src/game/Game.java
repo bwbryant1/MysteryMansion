@@ -39,6 +39,7 @@ public class Game {
 	private ConsoleParser parser;
 	private FightManager fight;
 	private Dialogue dialogue;
+	private Player player;
 
 	public Game(int[][] map, ConsoleParser parser2) throws SlickException {
 
@@ -47,7 +48,7 @@ public class Game {
 		this.setGrid(new TileGrid(map));
 		this.collide = new CollisionGrid(CollideMaps.Entrance1());
 		this.character = new GameCharSprite("res/images/playerD.png", 64, 100,
-				getGrid().getTile(5, 9), getGrid(), 32, 50, 100, 100,
+				getGrid().getTile(5, 8), getGrid(), 32, 50, 80, 100,
 				textManager, collide);
 		this.manager = new ObjectManager(character);
 		this.npcMan = new NPCmanager(character, getGrid(), collide, manager, this);
@@ -61,6 +62,34 @@ public class Game {
 		setBackgroundMusic(new Music("res/harmony.wav"));
 		getBackgroundMusic().loop(1, 100);
 		overlay = Artist.QuickLoad("Overlay");
+		player = new Player(inventory);
+	}
+
+	public void Update() {
+		switch (state) {
+		case GAME:
+	
+			Draw();
+	
+			if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
+				//Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
+				//character.setLevel(0);
+				
+			}
+	
+			break;
+		case PVE:
+			GL11.glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+			backgroundMusic.pause();
+			fight.Update();
+			break;
+		case DIALOGUE:
+	
+			Draw();
+			dialogue.Update();
+	
+			break;
+		}
 	}
 
 	public Dialogue getDialogue() {
@@ -87,33 +116,6 @@ public class Game {
 		this.grid = grid;
 	}
 
-	public void Update() {
-		switch (state) {
-		case GAME:
-
-			Draw();
-
-			if ((Keyboard.isKeyDown(Keyboard.KEY_SPACE))) {
-				Artist.DrawQuadTex(overlay, 0, 0, 1024, 1024);
-				character.setLevel(0);
-				
-			}
-
-			break;
-		case PVE:
-			GL11.glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
-			backgroundMusic.pause();
-			fight.Update();
-			break;
-		case DIALOGUE:
-
-			Draw();
-			dialogue.Update();
-
-			break;
-		}
-	}
-
 	public void setPaused(Boolean b) {
 		character.setPaused(b);
 		npcMan.setPaused(b);
@@ -121,6 +123,7 @@ public class Game {
 	}
 
 	private void Draw() {
+		player.Update();
 		inventory.Update();
 		getGrid().Update();
 		getGrid().Draw();

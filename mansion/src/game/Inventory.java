@@ -10,9 +10,6 @@ import org.newdawn.slick.opengl.Texture;
 public class Inventory {
 	private static Items[] InventorySlot;
 	private static int constantX = 48;
-	public static Items getInventorySlot(int slot) {
-		return InventorySlot[slot];
-	}
 	private Texture inventoryPic;
 	private Items[] items;
 	private powerUps[] powerUps;
@@ -98,6 +95,10 @@ public class Inventory {
 			InventorySlot[slot].setEquipped(b);
 			
 
+	}
+
+	public static Items getInventorySlot(int slot) {
+		return InventorySlot[slot];
 	}
 
 	public int getSlot_0_X() {
@@ -225,11 +226,11 @@ public class Inventory {
 		 slot_5_Y = 275+64 + constantY;
 		//row 3
 		 slot_6_X = 640 + constantX;
-		 slot_5_Y = 275+128 + constantY;
+		 slot_6_Y = 275+128 + constantY;
 		 slot_7_X = 640+64 + constantX;
-		 slot_5_Y = 275+128 + constantY;
+		 slot_7_Y = 275+128 + constantY;
 		 slot_8_X = 640+128 + constantX;
-		 slot_5_Y = 275+128 + constantY;
+		 slot_8_Y = 275+128 + constantY;
 		//row 4
 		slot_9_X = 640 + constantX;
 		slot_9_Y = 275+192 + constantY;
@@ -258,6 +259,46 @@ public class Inventory {
 		
 		Draw();
 
+	}
+
+	public int getSlot(int xCoordM, int yCoordM) {
+		if(xCoordM >= slot_0_X && xCoordM <= slot_0_X+64 && yCoordM >= slot_0_Y && yCoordM <= slot_0_Y+64){
+			return 0;
+		}
+		if(xCoordM >= slot_1_X && xCoordM <= slot_1_X+64 && yCoordM >= slot_1_Y && yCoordM <= slot_1_Y+64){
+			return 1;
+		}
+		if(xCoordM >= slot_2_X && xCoordM <= slot_2_X+64 && yCoordM >= slot_2_Y && yCoordM <= slot_2_Y+64){
+			return 2;
+		}
+		if(xCoordM >= slot_3_X && xCoordM <= slot_3_X+64 && yCoordM >= slot_3_Y && yCoordM <= slot_3_Y+64){
+			return 3;
+		}
+		if(xCoordM >= slot_4_X && xCoordM <= slot_4_X+64 && yCoordM >= slot_4_Y && yCoordM <= slot_4_Y+64){
+			return 4;
+		}
+		if(xCoordM >= slot_5_X && xCoordM <= slot_5_X+64 && yCoordM >= slot_5_Y && yCoordM <= slot_5_Y+64){
+			return 5;
+		}
+		if(xCoordM >= slot_6_X && xCoordM <= slot_6_X+64 && yCoordM >= slot_6_Y && yCoordM <= slot_6_Y+64){
+			return 6;
+		}
+		if(xCoordM >= slot_7_X && xCoordM <= slot_7_X+64 && yCoordM >= slot_7_Y && yCoordM <= slot_7_Y+64){
+			return 7;
+		}
+		if(xCoordM >= slot_8_X && xCoordM <= slot_8_X+64 && yCoordM >= slot_8_Y && yCoordM <= slot_8_Y+64){
+			return 8;
+		}
+		if(xCoordM >= slot_9_X && xCoordM <= slot_9_X+64 && yCoordM >= slot_9_Y && yCoordM <= slot_9_Y+64){
+			return 9;
+		}
+		if(xCoordM >= slot_10_X && xCoordM <= slot_10_X+64 && yCoordM >= slot_10_Y && yCoordM <= slot_10_Y+64){
+			return 10;
+		}
+		if(xCoordM >= slot_11_X && xCoordM <= slot_11_X+64 && yCoordM >= slot_11_Y && yCoordM <= slot_11_Y+64){
+			return 11;
+		}
+		return 12;
 	}
 	
 

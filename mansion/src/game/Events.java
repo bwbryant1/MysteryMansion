@@ -288,7 +288,7 @@ public class Events {
 			textManager.callText(0);
 			Entrance2();
 			manager.Entrance2();
-			gui.addItem(1, "sword");
+			
 
 		}
 		if (character.getLevel() == LivingRoom1) { // LivingRoom1 == 2
