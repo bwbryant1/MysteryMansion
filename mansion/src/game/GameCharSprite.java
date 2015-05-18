@@ -61,6 +61,7 @@ public class GameCharSprite {
 
 	private long health;
 	private boolean paused = false;
+	private Inventory inventory;
 
 	public boolean isPaused() {
 		return paused;
@@ -70,7 +71,7 @@ public class GameCharSprite {
 	}
 	public GameCharSprite(String file, int spriteWidth, int spriteHeight,
 			Tile startTile, TileGrid grid, int width, int height, int speed,
-			int health, TextManager textManager, CollisionGrid collide) {
+			int health, TextManager textManager, CollisionGrid collide, Inventory inventory) {
 		GameCharSprite.file = file;
 		this.startTile = startTile;
 		GameCharSprite.x = startTile.getX();
@@ -83,8 +84,9 @@ public class GameCharSprite {
 		GameCharSprite.spriteWidth = spriteWidth;
 		GameCharSprite.spriteHeight = spriteHeight;
 		GameCharSprite.currentLevel = 100;
-		GameCharSprite.exp = 1000;
+		GameCharSprite.exp = 0;
 		GameCharSprite.textManager = textManager;
+		this.inventory = inventory;
 		this.health = health;
 
 	}
@@ -98,14 +100,19 @@ public class GameCharSprite {
 		textManager.setText(textManager.getText(1), "Health: " + health, 650,
 				100, Color.red);
 		textManager.callText(1);
+		textManager.setText(textManager.getText(2), "Backpack: "+" ["+(inventory.getCurrentIndex())+"] " + inventory.getBackpack()[inventory.getCurrentIndex()].getItemName(), 650,
+				500, Color.red);
+		textManager.callText(2);
+		textManager.setText(textManager.getText(14), "Equipped", 690,
+				200, Color.red);
+		textManager.callText(14);
 		if (rendered == false) {
 			render();
 			rendered = true;
 		}
-	
-		ani.draw(x, y, width, height);
-	
+		ani.draw(x, y, width, height);	
 		ani.stop();
+		
 		if(!paused ){
 		keyboard(getKey());
 		}
@@ -113,22 +120,27 @@ public class GameCharSprite {
 	private void direction() {
 		switch (keyState) {
 		case UP:
-			setFile("res/images/playerU.png");
+			setFile("res/images/playerU2.png");
+			//setFile("res/images/cecilU.png");
 			render();
 			lastRender = Key_State.UP;
 			break;
 		case DOWN:
-			setFile("res/images/playerD.png");
+			setFile("res/images/playerD2.png");
+			//setFile("res/images/cecilD.png");
 			render();
 			lastRender = Key_State.DOWN;
 			break;
 		case LEFT:
-			setFile("res/images/playerL.png");
+			setFile("res/images/playerL2.png");
+			
+			//setFile("res/images/cecilL.png");
 			render();
 			lastRender = Key_State.LEFT;
 			break;
 		case RIGHT:
-			setFile("res/images/playerR.png");
+			setFile("res/images/playerR2.png");
+			//setFile("res/images/cecilR.png");
 			render();
 			lastRender = Key_State.RIGHT;
 			break;
@@ -390,5 +402,9 @@ public class GameCharSprite {
 
 	public void setY(float y) {
 		GameCharSprite.y = y;
+	}
+	public int getLevel2() {
+		
+		return 1;
 	}
 }

@@ -47,6 +47,7 @@ public class Dialogue {
 					dialogue_index++;
 				}
 				if (dialogueText[dialogue_index].equals("")) {
+					dialogue_index = 0;
 					game.setPaused(false);
 					game.setState(game.state.GAME);
 			}

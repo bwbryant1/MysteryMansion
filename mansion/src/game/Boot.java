@@ -16,6 +16,7 @@ import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 public class Boot {
@@ -24,7 +25,7 @@ public class Boot {
 		INTRO, GAME, MAIN_MENU, PAUSED;
 	}
 
-	public static State state = State.GAME;
+	public static State state = State.MAIN_MENU;
 	public static TextString paused;
 
 	public static State getState() {
@@ -98,8 +99,8 @@ public class Boot {
 				break;
 			case GAME:
 				//map.setVisible(false);
-			//	menu.getBackgroundNoise().stop();
-				menu.getBackgroundNoise().stop();
+			menu.getBackgroundNoise().stop();
+				//menu.getBackgroundNoise().stop();
 				
 				glClear(GL_COLOR_BUFFER_BIT);
 				if(first){

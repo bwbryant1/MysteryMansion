@@ -8,12 +8,25 @@ public class Items {
 
 	public static Items empty() {
 		Items item = new Items("no item", 0, 0, 0);
+		
 		return item;
 	}
+
 	public static Items sword() {
-		Items item = new Items("Sword", 25, 1000, 2);
+		Items item = new Items("Sword", 25, 1000, 3);
 		return item;
 	}
+
+	public static Items speedPotion() {
+		Items item = new Items("Speed", 25, 1000, 1);
+		return item;
+	}
+
+	public static Items strengthPotion() {
+		Items item = new Items("Strength", 25, 1000, 2);
+		return item;
+	}
+
 	private String itemName;
 	private int value, damage, cost;
 	private boolean isEquipped;
@@ -52,22 +65,17 @@ public class Items {
 				return Artist.QuickLoad("items/BlankTile");
 			case 1:
 
-				return Artist.QuickLoad("items/potion_E");
-			case 2:
-				return Artist.QuickLoad("items/sword_E");
-
-			}
-		} else {
-			switch (image) {
-			case 0:
-				return Artist.QuickLoad("items/BlankTile");
-			case 1:
-
 				return Artist.QuickLoad("items/potion");
 			case 2:
+				return Artist.QuickLoad("items/potion2");
+			case 3:
 				return Artist.QuickLoad("items/sword");
 
 			}
+		} else {
+
+			return Artist.QuickLoad("items/BlankTile");
+
 		}
 		return null;
 

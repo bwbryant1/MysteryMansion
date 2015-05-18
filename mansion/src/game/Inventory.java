@@ -5,22 +5,77 @@ import gameitems.allies;
 import gameitems.powerUps;
 import helpers.Artist;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.opengl.Texture;
 
 public class Inventory {
 	private static Items[] InventorySlot;
+	private Texture sword = Artist.QuickLoad("items/sword");
+	private Texture blank = Artist.QuickLoad("items/BlankTile");
+	private Texture speed = Artist.QuickLoad("items/potion2");
+	private Texture strength = Artist.QuickLoad("items/potion");
 	private static int constantX = 48;
 	private Texture inventoryPic;
-	private Items[] items;
+	private Items[] backpack;
+	private int currentIndex = 0;
+	public Texture getSword() {
+		return sword;
+	}
+
+	public Texture getBlank() {
+		return blank;
+	}
+
+	public Texture getSpeed() {
+		return speed;
+	}
+
+	public Texture getStrength() {
+		return strength;
+	}
+
+	public static int getConstantX() {
+		return constantX;
+	}
+
+	public Texture getInventoryPic() {
+		return inventoryPic;
+	}
+
+	public powerUps[] getPowerUps() {
+		return powerUps;
+	}
+
+	public allies[] getAllies() {
+		return allies;
+	}
+
+	public int getConstantY() {
+		return constantY;
+	}
+
+	public boolean isDirectionUp() {
+		return directionUp;
+	}
+
+	public boolean isHasClicked() {
+		return hasClicked;
+	}
+
 	private powerUps[] powerUps;
 	private allies[] allies;
 	private int constantY = -48;
-	private int slot_0_X,slot_1_X,slot_2_X,slot_3_X,slot_4_X,slot_5_X,slot_6_X,slot_7_X,slot_8_X,slot_9_X,slot_10_X,slot_11_X;
+	private int slot_0_X, slot_1_X, slot_2_X, slot_3_X, slot_4_X, slot_5_X,
+			slot_6_X, slot_7_X, slot_8_X, slot_9_X, slot_10_X, slot_11_X;
 
-	private int slot_0_Y,slot_1_Y,slot_2_Y,slot_3_Y,slot_4_Y,slot_5_Y,slot_6_Y,slot_7_Y,slot_8_Y,slot_9_Y,slot_10_Y,slot_11_Y;
+	private int slot_0_Y, slot_1_Y, slot_2_Y, slot_3_Y, slot_4_Y, slot_5_Y,
+			slot_6_Y, slot_7_Y, slot_8_Y, slot_9_Y, slot_10_Y, slot_11_Y;
+	private boolean directionUp;
+	private boolean hasClicked = false;
 
 	public Inventory() {
 		InventorySlot = new Items[12];
+		backpack = new Items[12];
 
 		inventoryPic = Artist.QuickLoad("images/gui");
 		loadItems();
@@ -41,50 +96,50 @@ public class Inventory {
 	}
 
 	private void Draw() {
-		
-		//Draws the background for the GUI
+
+		// Draws the background for the GUI
 		Artist.DrawQuadTex(inventoryPic, 640 + constantX, 275 + constantY,
 				64 * 4, 256);
-		//Draws each item in the inventory. so far 12 items (0-11)
+		// Draws each item in the inventory. so far 12 items (0-11)
 		for (int itemNum = 0; itemNum < InventorySlot.length; itemNum++) {
 
 			switch (itemNum) {
 			case 0:
-				Artist.DrawQuadTex(InventorySlot[0].getImage(),
-						slot_0_X ,slot_0_Y , 64, 64);
+				Artist.DrawQuadTex(InventorySlot[0].getImage(), slot_0_X,
+						slot_0_Y, 64, 64);
 			case 1:
-				Artist.DrawQuadTex(InventorySlot[1].getImage(),
-						slot_1_X , slot_1_Y , 64, 64);
+				Artist.DrawQuadTex(InventorySlot[1].getImage(), slot_1_X,
+						slot_1_Y, 64, 64);
 			case 2:
-				Artist.DrawQuadTex(InventorySlot[2].getImage(),
-						slot_2_X , slot_2_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[2].getImage(), slot_2_X,
+						slot_2_Y, 64, 64);
 			case 3:
-				Artist.DrawQuadTex(InventorySlot[3].getImage(),
-						slot_3_X , slot_3_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[3].getImage(), slot_3_X,
+						slot_3_Y, 64, 64);
 			case 4:
-				Artist.DrawQuadTex(InventorySlot[4].getImage(),
-						slot_4_X , slot_4_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[4].getImage(), slot_4_X,
+						slot_4_Y, 64, 64);
 			case 5:
-				Artist.DrawQuadTex(InventorySlot[5].getImage(),
-						slot_5_X , slot_5_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[5].getImage(), slot_5_X,
+						slot_5_Y, 64, 64);
 			case 6:
-				Artist.DrawQuadTex(InventorySlot[6].getImage(),
-						slot_6_X ,slot_6_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[6].getImage(), slot_6_X,
+						slot_6_Y, 64, 64);
 			case 7:
-				Artist.DrawQuadTex(InventorySlot[7].getImage(),
-						slot_7_X , slot_7_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[7].getImage(), slot_7_X,
+						slot_7_Y, 64, 64);
 			case 8:
-				Artist.DrawQuadTex(InventorySlot[8].getImage(),
-						slot_8_X , slot_8_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[8].getImage(), slot_8_X,
+						slot_8_Y, 64, 64);
 			case 9:
-				Artist.DrawQuadTex(InventorySlot[9].getImage(),
-						slot_9_X , slot_9_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[9].getImage(), slot_9_X,
+						slot_9_Y, 64, 64);
 			case 10:
-				Artist.DrawQuadTex(InventorySlot[10].getImage(),
-						slot_10_X , slot_10_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[10].getImage(), slot_10_X,
+						slot_10_Y, 64, 64);
 			case 11:
-				Artist.DrawQuadTex(InventorySlot[11].getImage(),
-						slot_11_X , slot_11_Y, 64, 64);
+				Artist.DrawQuadTex(InventorySlot[11].getImage(), slot_11_X,
+						slot_11_Y, 64, 64);
 
 			}
 		}
@@ -92,8 +147,7 @@ public class Inventory {
 	}
 
 	public void equip(int slot, boolean b) {
-			InventorySlot[slot].setEquipped(b);
-			
+		InventorySlot[slot].setEquipped(b);
 
 	}
 
@@ -104,6 +158,7 @@ public class Inventory {
 	public int getSlot_0_X() {
 		return slot_0_X;
 	}
+
 	public int getSlot_0_Y() {
 		return slot_0_Y;
 	}
@@ -111,6 +166,7 @@ public class Inventory {
 	public int getSlot_1_X() {
 		return slot_1_X;
 	}
+
 	public int getSlot_1_Y() {
 		return slot_1_Y;
 	}
@@ -195,51 +251,135 @@ public class Inventory {
 		return slot_9_Y;
 	}
 
-	public boolean isClicked(){
-		
-		return false;
-		
+	public void isClicked(int slot) {
+		if (slot != 12) {
+			if(!inInventory()){
+				InventorySlot[slot] = backpack[currentIndex];
+				equip(slot, true);
+				System.out.println("equipped" + slot + " "
+						+ backpack[currentIndex].getItemName());
+
+			}
+			}
+
+
 	}
 
-	public boolean isEmpty(int slot){
-		if(InventorySlot[slot].getImageNum()==0){
+	public void Update() {
+		if ((Keyboard.isKeyDown(Keyboard.KEY_R)) && !hasClicked) {
+			hasClicked = true;
 			
+			if (currentIndex == 0) {
+				directionUp = true;
+
+			}
+
+			if (currentIndex <= backpack.length && directionUp) {
+				currentIndex++;
+				if (currentIndex == backpack.length) {
+					currentIndex = 0;
+
+				}
+
+			}
+
+			//System.out.println(currentIndex);
+		}
+		if ((Keyboard.isKeyDown(Keyboard.KEY_E)) && !hasClicked) {
+			hasClicked = true;
+			
+			if (currentIndex == 0) {
+				directionUp = true;
+
+			}
+
+			if (currentIndex <= backpack.length && directionUp) {
+				currentIndex++;
+				if (currentIndex == backpack.length) {
+					currentIndex = 0;
+
+				}
+
+			}
+
+			//System.out.println(currentIndex);
+		}
+		if(!(Keyboard.isKeyDown(Keyboard.KEY_R))){
+			hasClicked = false;
+		}
+		
+
+		for (int i = 0; i < InventorySlot.length; i++) {
+			if (InventorySlot[i].isEquipped()) {
+				String text = InventorySlot[i].getItemName();
+				switch (text) {
+				case "Sword":
+					InventorySlot[i].setImage(sword);
+					break;
+				case "no item":
+					InventorySlot[i].setImage(blank);
+					break;
+				case "Strength":
+					InventorySlot[i].setImage(strength);
+					break;
+				case "Speed":
+					InventorySlot[i].setImage(speed);
+					break;
+
+				}
+			}
+		}
+
+		Draw();
+
+	}
+	public boolean inInventory(){
+		for (int i = 0; i < InventorySlot.length; i++) {
+			if (backpack[currentIndex].equals(InventorySlot[i])){
+				System.out.println("test");
+				return true;
+				}
+			}
+		return false;
+	}
+	public boolean isEmpty(int slot) {
+		if (InventorySlot[slot].getImageNum() == 0) {
+
 			return true;
 		}
 		return false;
 	}
 
 	public void loadItems() {
-		//row 1
+		// row 1
 		slot_0_X = 640 + constantX;
 		slot_0_Y = 275 + constantY;
-		slot_1_X = 640+64 + constantX;
+		slot_1_X = 640 + 64 + constantX;
 		slot_1_Y = 275 + constantY;
-		slot_2_X = 640+128 + constantX;
+		slot_2_X = 640 + 128 + constantX;
 		slot_2_Y = 275 + constantY;
-		//row 2
-		 slot_3_X = 640 + constantX;
-		 slot_3_Y = 275+64 + constantY;
-		 slot_4_X = 640+64 + constantX;
-		 slot_4_Y = 275+64 + constantY;
-		 slot_5_X = 640+128 + constantX;
-		 slot_5_Y = 275+64 + constantY;
-		//row 3
-		 slot_6_X = 640 + constantX;
-		 slot_6_Y = 275+128 + constantY;
-		 slot_7_X = 640+64 + constantX;
-		 slot_7_Y = 275+128 + constantY;
-		 slot_8_X = 640+128 + constantX;
-		 slot_8_Y = 275+128 + constantY;
-		//row 4
+		// row 2
+		slot_3_X = 640 + constantX;
+		slot_3_Y = 275 + 64 + constantY;
+		slot_4_X = 640 + 64 + constantX;
+		slot_4_Y = 275 + 64 + constantY;
+		slot_5_X = 640 + 128 + constantX;
+		slot_5_Y = 275 + 64 + constantY;
+		// row 3
+		slot_6_X = 640 + constantX;
+		slot_6_Y = 275 + 128 + constantY;
+		slot_7_X = 640 + 64 + constantX;
+		slot_7_Y = 275 + 128 + constantY;
+		slot_8_X = 640 + 128 + constantX;
+		slot_8_Y = 275 + 128 + constantY;
+		// row 4
 		slot_9_X = 640 + constantX;
-		slot_9_Y = 275+192 + constantY;
-		slot_10_X = 640+64 + constantX;
-		slot_10_Y = 275+192 + constantY;
-		slot_11_X = 640+128 + constantX;
-		slot_11_Y = 275+192 + constantY;
-		
-		
+		slot_9_Y = 275 + 192 + constantY;
+		slot_10_X = 640 + 64 + constantX;
+		slot_10_Y = 275 + 192 + constantY;
+		slot_11_X = 640 + 128 + constantX;
+		slot_11_Y = 275 + 192 + constantY;
+
 		InventorySlot[0] = new Items("no item", 0, 0, 0);
 		InventorySlot[1] = new Items("no item", 0, 0, 0);
 		InventorySlot[2] = new Items("no item", 0, 0, 0);
@@ -253,53 +393,95 @@ public class Inventory {
 		InventorySlot[10] = new Items("no item", 0, 0, 0);
 		InventorySlot[11] = new Items("no item", 0, 0, 0);
 
+		backpack[0] = Items.sword();
+		backpack[1] = Items.speedPotion();
+		backpack[2] = Items.strengthPotion();
+		backpack[3] = new Items("no item", 0, 0, 0);
+		backpack[4] = new Items("no item", 0, 0, 0);
+		backpack[5] = new Items("no item", 0, 0, 0);
+		backpack[6] = new Items("no item", 0, 0, 0);
+		backpack[7] = new Items("no item", 0, 0, 0);
+		backpack[8] = new Items("no item", 0, 0, 0);
+		backpack[9] = new Items("no item", 0, 0, 0);
+		backpack[10] = new Items("no item", 0, 0, 0);
+		backpack[11] = new Items("no item", 0, 0, 0);
+
 	}
 
-	public void Update() {
-		
-		Draw();
+	public Items[] getBackpack() {
+		return backpack;
+	}
 
+	public void setBackpack(Items[] backpack) {
+		this.backpack = backpack;
+	}
+
+	public int getCurrentIndex() {
+		return currentIndex;
+	}
+
+	public void setCurrentIndex(int currentIndex) {
+		this.currentIndex = currentIndex;
+	}
+
+	public static Items[] getInventorySlot() {
+		return InventorySlot;
+	}
+
+	public static void setInventorySlot(Items[] inventorySlot) {
+		InventorySlot = inventorySlot;
 	}
 
 	public int getSlot(int xCoordM, int yCoordM) {
-		if(xCoordM >= slot_0_X && xCoordM <= slot_0_X+64 && yCoordM >= slot_0_Y && yCoordM <= slot_0_Y+64){
+		if (xCoordM >= slot_0_X && xCoordM <= slot_0_X + 64
+				&& yCoordM >= slot_0_Y && yCoordM <= slot_0_Y + 64) {
 			return 0;
 		}
-		if(xCoordM >= slot_1_X && xCoordM <= slot_1_X+64 && yCoordM >= slot_1_Y && yCoordM <= slot_1_Y+64){
+		if (xCoordM >= slot_1_X && xCoordM <= slot_1_X + 64
+				&& yCoordM >= slot_1_Y && yCoordM <= slot_1_Y + 64) {
 			return 1;
 		}
-		if(xCoordM >= slot_2_X && xCoordM <= slot_2_X+64 && yCoordM >= slot_2_Y && yCoordM <= slot_2_Y+64){
+		if (xCoordM >= slot_2_X && xCoordM <= slot_2_X + 64
+				&& yCoordM >= slot_2_Y && yCoordM <= slot_2_Y + 64) {
 			return 2;
 		}
-		if(xCoordM >= slot_3_X && xCoordM <= slot_3_X+64 && yCoordM >= slot_3_Y && yCoordM <= slot_3_Y+64){
+		if (xCoordM >= slot_3_X && xCoordM <= slot_3_X + 64
+				&& yCoordM >= slot_3_Y && yCoordM <= slot_3_Y + 64) {
 			return 3;
 		}
-		if(xCoordM >= slot_4_X && xCoordM <= slot_4_X+64 && yCoordM >= slot_4_Y && yCoordM <= slot_4_Y+64){
+		if (xCoordM >= slot_4_X && xCoordM <= slot_4_X + 64
+				&& yCoordM >= slot_4_Y && yCoordM <= slot_4_Y + 64) {
 			return 4;
 		}
-		if(xCoordM >= slot_5_X && xCoordM <= slot_5_X+64 && yCoordM >= slot_5_Y && yCoordM <= slot_5_Y+64){
+		if (xCoordM >= slot_5_X && xCoordM <= slot_5_X + 64
+				&& yCoordM >= slot_5_Y && yCoordM <= slot_5_Y + 64) {
 			return 5;
 		}
-		if(xCoordM >= slot_6_X && xCoordM <= slot_6_X+64 && yCoordM >= slot_6_Y && yCoordM <= slot_6_Y+64){
+		if (xCoordM >= slot_6_X && xCoordM <= slot_6_X + 64
+				&& yCoordM >= slot_6_Y && yCoordM <= slot_6_Y + 64) {
 			return 6;
 		}
-		if(xCoordM >= slot_7_X && xCoordM <= slot_7_X+64 && yCoordM >= slot_7_Y && yCoordM <= slot_7_Y+64){
+		if (xCoordM >= slot_7_X && xCoordM <= slot_7_X + 64
+				&& yCoordM >= slot_7_Y && yCoordM <= slot_7_Y + 64) {
 			return 7;
 		}
-		if(xCoordM >= slot_8_X && xCoordM <= slot_8_X+64 && yCoordM >= slot_8_Y && yCoordM <= slot_8_Y+64){
+		if (xCoordM >= slot_8_X && xCoordM <= slot_8_X + 64
+				&& yCoordM >= slot_8_Y && yCoordM <= slot_8_Y + 64) {
 			return 8;
 		}
-		if(xCoordM >= slot_9_X && xCoordM <= slot_9_X+64 && yCoordM >= slot_9_Y && yCoordM <= slot_9_Y+64){
+		if (xCoordM >= slot_9_X && xCoordM <= slot_9_X + 64
+				&& yCoordM >= slot_9_Y && yCoordM <= slot_9_Y + 64) {
 			return 9;
 		}
-		if(xCoordM >= slot_10_X && xCoordM <= slot_10_X+64 && yCoordM >= slot_10_Y && yCoordM <= slot_10_Y+64){
+		if (xCoordM >= slot_10_X && xCoordM <= slot_10_X + 64
+				&& yCoordM >= slot_10_Y && yCoordM <= slot_10_Y + 64) {
 			return 10;
 		}
-		if(xCoordM >= slot_11_X && xCoordM <= slot_11_X+64 && yCoordM >= slot_11_Y && yCoordM <= slot_11_Y+64){
+		if (xCoordM >= slot_11_X && xCoordM <= slot_11_X + 64
+				&& yCoordM >= slot_11_Y && yCoordM <= slot_11_Y + 64) {
 			return 11;
 		}
 		return 12;
 	}
-	
 
 }

@@ -28,7 +28,7 @@ public class DialogueText {
 		dialogue[1] = "Callon: There’s an oddness to it that I can’t lay my finger on.";
 		dialogue[2] = "Cary: That’s because the oddness that you feel in your chest is not the house.";
 		dialogue[3] = "Cary: It is your downfall!!";
-		dialogue[4] = "<Cary disappears>"; 
+		dialogue[4] = "<Cary vanishes in an instant... You draw your sword>"; 
 		dialogue[5] = " ";
 		dialogue[6] = "";
 
@@ -60,33 +60,41 @@ public class DialogueText {
 		dialogue[1] = " ";
 		dialogue[2] = "";
 		
-		return null;
+		return dialogue;
 		
 	}
 	public static String[] afterFight() {
-		String[] dialogue = new String[3];
-		dialogue[0] = "Callon: Is that all you can muster my former master? Maybe the younger years suit you best.";
+		String[] dialogue = new String[6];
+		dialogue[0] = "Callon: Is that all you can muster my former master?";
 		dialogue[1] = "Cary: Don’t get too cocky boy, you have only bested a pawn! As you shall become soon.";
-		dialogue[2] = " ";
+		dialogue[2] = "<Cary's presence vanishes>";
+		dialogue[3] = "Cary: I don't think i should try this way yet";
+		dialogue[4] = " ";
+		dialogue[5] = "";
+		
 
 		
-		return null;
+		return dialogue;
 		
 	}
 
 
 	public static String[] ballroomScene1()
 	{
-		String[] dialogue = new String[9];
+		String[] dialogue = new String[12];
 		dialogue[0]="Cary: Oh how I will seduce your young mother here.";
 		dialogue[1]="Callon: Bastard! What do you mean?";
-		dialogue[2]="Cary: I have not the reason to explain, for soon you will be dead and I will have thine body.";
-		dialogue[3]="Callon: By my hand you will die a death that not even the heavens themselves hath seen.";
-		dialogue[4]="Cary: The way you are now I shant not waste a breath on incinerating thine body.";
-		dialogue[5]="I will need you to get stronger to take over thine body.";
-		dialogue[6]="Let your anger and rage consume thy soul and get stronger.";
-		dialogue[7]="    ";
-		dialogue[8]= "";
+		dialogue[2]="Cary: I have not the reason to explain, for soon...";
+		dialogue[3]="you will be dead and I will have thine body.";
+		dialogue[4]="Callon: By my hand you will die a death that not even..";
+		dialogue[5]=" the heavens themselves hath seen.";
+		dialogue[6]="Cary: The way you are now I shant not worry over incinerating thine body.";
+		dialogue[7]="I will need you to get stronger to take over thine body.";
+		dialogue[8]="Let your anger and rage consume thy soul and get stronger.";
+		dialogue[9] = "<Cary Vanishes>";
+		
+		dialogue[10]="    ";
+		dialogue[11]= "";
 		return dialogue;
 	}
 		
@@ -106,26 +114,27 @@ public class DialogueText {
 	
 	public static String[] ballroomSceneAfterCutscene()
 	{
-		String[] dialogue = new String[19];
-		dialogue[0]="Cary: Good morrow my loyal generals.";
-		dialogue[1]="Benedict: <Says to himself> That is what he thinks..";
-		dialogue[2]="Cary: *Shakes his head* Where is Cecil?";
-		dialogue[3]="Benedict: You know he hath not the eyes that see like humans anymore.";
-		dialogue[4]="Benedict: Why do you keep such an annoyance around?";
-		dialogue[5]="Cary: It is because he has potential for use. No more, no less.";
-		dialogue[6]="Cary: He lost his eyes to see so his other senses have been peaked.";
-		dialogue[7]="Cary: Sad that he hath no brain to function.";
-		dialogue[8]="Benedict: Forget that useless swine.";
-		dialogue[9]="My lord what is this treachery you have brought into thine most prestigious home?";
-		dialogue[10]="Cary: As you know, I am losing my youth.";
-		dialogue[11]="Cary: By the day I am getting weaker.";
-		dialogue[12]="Cary: So I must acquire a body to further my plans to rule this world";
-		dialogue[13]="Cary: I must marry the young mother of this brat of a child.";
-		dialogue[14]="Cary: Go now and defeat this child, and if you succeed I will make you emperor of the world";
-		dialogue[15]="Benedict: Yes!! I will gladly rid you of this pesky fly once and for all.";
-		dialogue[16]="Benedict: And then I shall return victorious.";
-		dialogue[17]="   ";
-		dialogue[18]="";
+		String[] dialogue = new String[20];
+		dialogue[0]="<Sometime later>";
+		dialogue[1]="Cary: Good morrow my loyal generals.";
+		dialogue[2]="Benedict: <Says to himself> That is what he thinks..";
+		dialogue[3]="Cary: *Shakes his head* Where is Cecil?";
+		dialogue[4]="Benedict: You know he hath not the eyes that see like humans anymore.";
+		dialogue[5]="Benedict: Why do you keep such an annoyance around?";
+		dialogue[6]="Cary: It is because he has potential for use. No more, no less.";
+		dialogue[7]="Cary: He lost his eyes to see so his other senses have been peaked.";
+		dialogue[8]="Cary: Sad that he hath no brain to function.";
+		dialogue[9]="Benedict: Forget that useless swine.";
+		dialogue[10]="My lord what is this you have brought into thine most prestigious home?";
+		dialogue[11]="Cary: As you know, I am losing my youth.";
+		dialogue[12]="Cary: By the day I am getting weaker.";
+		dialogue[13]="Cary: So I must acquire a body to further my plans to rule this world";
+		dialogue[14]="Cary: I must marry the young mother of this brat of a child.";
+		dialogue[15]="Cary: Go and defeat this child. Then I will make you emperor of the world";
+		dialogue[16]="Benedict: Yes!! I will gladly rid you of this pesky fly once and for all.";
+		dialogue[17]="Benedict: And then I shall return victorious.";
+		dialogue[18]="   ";
+		dialogue[19]="";
 		
 		return dialogue;
 	}
@@ -136,9 +145,9 @@ public class DialogueText {
 		dialogue[0]="Callon: Why was my mother with this man? She isn't evil.";
 		dialogue[1]="*Crash!!*";
 		dialogue[2]="*Callon dodges*";
-		dialogue[3]="Callon: Speak thy name.";
+		dialogue[3]="Callon: Speak thy name, villain!!";
 		dialogue[4]="Cecil: Thine name is...uh...Cecil!!";
-		dialogue[5]="Cecil: Why art thou here in the dining room?";
+		dialogue[5]="Cecil: Why art thou here in this Art Gallery?";
 		dialogue[6]="Callon: <Says to himself> Hath he the eyesight of no man?";
 		dialogue[7]="Callon: I am the one to which question may be asked.";
 		dialogue[8]="Cecil: I dont like thee. Die!!!";

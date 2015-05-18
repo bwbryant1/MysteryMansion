@@ -14,6 +14,8 @@ public class TextManager {
 	private static TextString Level, Health;
 	private static TextString enemyHealth, enemyLevel, enemyExp,enemyName;
 	private TextString playerName;
+	private TextString SelectedItem;
+	private TextString Equip;
 	private static TextString Enter;
 
 	public TextManager() {
@@ -37,6 +39,8 @@ public class TextManager {
 	private void makeTextStrings() {
 
 		Level = new TextString(750, 250, "test", Color.red, 1);
+		SelectedItem = new TextString(750, 250, "test", Color.red, 1);
+		Equip = new TextString(750, 250, "test", Color.red, 1);
 		playerLevel = new TextString(750, 250, "test", Color.red, 1);
 		playerName = new TextString(750, 250, "test", Color.red, 1);
 		exp = new TextString(750, 250, "test", Color.red, 1);
@@ -55,6 +59,7 @@ public class TextManager {
 		enemyName = new TextString(750, 250, "test", Color.red, 1);
 		
 		textCall.add(Title);
+		textCall.add(SelectedItem);
 		textCall.add(Paused);
 		textCall.add(Health);
 		textCall.add(Level);
@@ -67,6 +72,7 @@ public class TextManager {
 		textCall.add(enemyExp);
 		textCall.add(enemyName);
 		textCall.add(Enter);
+		textCall.add(Equip);
 
 		
 		

@@ -46,6 +46,7 @@ public class NPC {
 	private Counter walkCounter, resetCounter;
 	private Counter counter;
 	private boolean changedDirection = false;
+	private int RIGHT,LEFT,UP,DOWN;
 
 	public NPC(String file, GameCharSprite character, CollisionGrid collide2,
 			int spriteWidth, int spriteHeight, Tile startTile, TileGrid grid,
@@ -69,28 +70,102 @@ public class NPC {
 	private void direction() {
 		switch (npcState) {
 		case UP:
-			setFile("res/redirect3.png");
+
+			setFile(getSprite(UP));
 			render();
 			lastRender = NPC_State.UP;
 			break;
 		case DOWN:
-			setFile("res/redirect4.png");
+			setFile(getSprite(DOWN));
 			render();
 			lastRender = NPC_State.DOWN;
 			break;
 		case LEFT:
-			setFile("res/redirect2.png");
+			setFile(getSprite(LEFT));
 			render();
 			lastRender = NPC_State.LEFT;
 			break;
 		case RIGHT:
-			setFile("res/redirect.png");
+			setFile(getSprite(RIGHT));
 			render();
 			lastRender = NPC_State.RIGHT;
 			break;
 
 		}
 
+	}
+public void setSprite(String name) {
+	switch(name){
+	case "robot":
+		spriteHeight = 128;
+		spriteWidth = 518/7; 
+		width = (518/7)/2;
+		height = 128/2;
+		UP = 0;
+		DOWN = 1;
+		LEFT = 2;
+		RIGHT = 3;
+		break;
+	case "skeleton":
+		spriteHeight = 64;
+		spriteWidth = 170/4; 
+		width = 170/4;
+		height = 64;
+		UP = 4;
+		DOWN = 5;
+		LEFT = 6;
+		RIGHT = 7;
+	}
+	
+}
+	private String getSprite(int file) {
+		switch (file) {
+		case 0:
+			return "res/images/caryU.png";
+		case 1:
+			return "res/images/caryD.png";
+		case 2:
+			return "res/images/caryL.png";
+		case 3:
+			return "res/images/caryR.png";
+		case 4:
+			setSpriteWidth(170/4);
+			setSpriteHeight(64);
+			
+			return "res/skeleton_r.png";
+		case 5:
+			setSpriteWidth(170/4);
+			setSpriteHeight(64);
+			return "res/skeleton_r.png";
+		case 6:
+			setSpriteWidth(170/4);
+			setSpriteHeight(170);
+			return "res/skeleton_r.png";
+		case 7:
+			setSpriteWidth(170/4);
+			setSpriteHeight(64);
+			return "res/skeleton_r.png";
+		}
+
+		return null;
+		// TODO Auto-generated method stub
+
+	}
+
+	public static int getSpriteWidth() {
+		return spriteWidth;
+	}
+
+	public static void setSpriteWidth(int spriteWidth) {
+		NPC.spriteWidth = spriteWidth;
+	}
+
+	public static int getSpriteHeight() {
+		return spriteHeight;
+	}
+
+	public static void setSpriteHeight(int spriteHeight) {
+		NPC.spriteHeight = spriteHeight;
 	}
 
 	public boolean findNextB() {
@@ -200,7 +275,6 @@ public class NPC {
 	}
 
 	public void setDirection(int caseNum) {
-		
 
 		switch (caseNum) {
 		case 1:
@@ -229,7 +303,6 @@ public class NPC {
 			break;
 
 		}
-		
 
 	}
 
@@ -334,7 +407,7 @@ public class NPC {
 
 	public void Update2(boolean b) {
 		if (rendered == false) {
-			
+
 			render();
 			rendered = true;
 		}
@@ -342,73 +415,71 @@ public class NPC {
 
 		ani.stop();
 
-
-			if (b) {
-				changedDirection = true;
-				switch (npcState) {
-				case RIGHT:
-					npcState = NPC_State.RIGHT;
-					if (lastRender != NPC_State.RIGHT) {
-						direction();
+		if (b) {
+			changedDirection = true;
+			switch (npcState) {
+			case RIGHT:
+				npcState = NPC_State.RIGHT;
+				if (lastRender != NPC_State.RIGHT) {
+					direction();
+				}
+				if (x < TileGrid.tileSize * TileGrid.COLUMN - 64
+						&& !findNextR()) {
+					if (true) {
+						ani.start();
+						ani.draw(x, y, width, height);
+						x += Delta() * speed;
 					}
-					if (x < TileGrid.tileSize * TileGrid.COLUMN - 64
-							&& !findNextR()) {
-						if (true) {
-							ani.start();
-							ani.draw(x, y, width, height);
-							x += Delta() * speed;
-						}
-
-					}
-
-					break;
-				case LEFT:
-					npcState = NPC_State.LEFT;
-					if (lastRender != NPC_State.LEFT) {
-						direction();
-					}
-					if (x > 16 && !findNextL()) {
-						if (true) {
-							ani.start();
-							ani.draw(x, y, width, height);
-							x -= Delta() * speed;
-						}
-
-					}
-					break;
-				case UP:
-					npcState = NPC_State.UP;
-					if (lastRender != NPC_State.UP) {
-						direction();
-					}
-					if (y > TileGrid.tileSize / 4 && !findNextT()) {
-						if (true) {
-							ani.start();
-							ani.draw(x, y, width, height);
-							y -= Delta() * speed;
-						}
-
-					}
-					break;
-				case DOWN:
-					npcState = NPC_State.DOWN;
-					if (lastRender != NPC_State.DOWN) {
-						direction();
-					}
-					if (y < TileGrid.tileSize * TileGrid.ROW - 80
-							&& !findNextB()) {
-						if (true) {
-							ani.start();
-							ani.draw(x, y, width, height);
-							y += Delta() * speed;
-						}
-
-					}
-					break;
 
 				}
+
+				break;
+			case LEFT:
+				npcState = NPC_State.LEFT;
+				if (lastRender != NPC_State.LEFT) {
+					direction();
+				}
+				if (x > 16 && !findNextL()) {
+					if (true) {
+						ani.start();
+						ani.draw(x, y, width, height);
+						x -= Delta() * speed;
+					}
+
+				}
+				break;
+			case UP:
+				npcState = NPC_State.UP;
+				if (lastRender != NPC_State.UP) {
+					direction();
+				}
+				if (y > TileGrid.tileSize / 4 && !findNextT()) {
+					if (true) {
+						ani.start();
+						ani.draw(x, y, width, height);
+						y -= Delta() * speed;
+					}
+
+				}
+				break;
+			case DOWN:
+				npcState = NPC_State.DOWN;
+				if (lastRender != NPC_State.DOWN) {
+					direction();
+				}
+				if (y < TileGrid.tileSize * TileGrid.ROW - 80 && !findNextB()) {
+					if (true) {
+						ani.start();
+						ani.draw(x, y, width, height);
+						y += Delta() * speed;
+					}
+
+				}
+				break;
+
 			}
 		}
+	}
 
 	public static void setX(float x) {
 		NPC.x = x;
@@ -417,7 +488,4 @@ public class NPC {
 	public static void setY(float y) {
 		NPC.y = y;
 	}
-	}
-		
-	
-
+}
